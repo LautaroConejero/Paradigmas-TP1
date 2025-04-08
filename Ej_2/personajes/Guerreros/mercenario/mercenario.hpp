@@ -1,26 +1,34 @@
 #ifndef MERCENARIO_HPP
 #define MERCENARIO_HPP
 
-#include "../../Guerreros/Guerreros.hpp"
+#include "../Guerreros.hpp"
 
+class Equipo;
+struct Marca {
+    shared_ptr<personaje> enemigo;
+    int rondas_restantes = 2;
+    string marca_tipo;
+};
 class mercenario : public Guerreros {
     private:
-        shared_ptr<arma> arma_robada;
         int oro_total;
-        bool sicario;
-        bool cañon;
-
+        float critico_oro;
+        shared_ptr<arma> arma_robada = nullptr;
+        vector<Marca> marcas_activas;
     public:
-        mercenario(int v, int a, int rm, int e, string n);
+        mercenario(string n);
+        string Get_grupo() const override;
         void robar_arma(shared_ptr<personaje> enemigo);
         void robar_oro(shared_ptr<personaje> enemigo);
-        void contratar_sicario();
-        void ataque_con_sicario(vector<shared_ptr<personaje>> enemigos);
-        void asesinar_aliado(shared_ptr<personaje> aliado);
-
-        void cañonazo();
-        int ataque_con_cañonazo();
+        void aplicar_oro();
+        void ataque_rapido(shared_ptr<personaje> enemigo) override;
+        void atacar_con_arma(shared_ptr<personaje> enemigo) override;
+        void marcar_enemigo(shared_ptr<personaje> enemigo, string marca_tipo);
+        void procesar_marcas();
+        void aplicar_marcas(Marca marca);
+        void contratar_sicario(shared_ptr<personaje> enemigo);
+        void asesinar_aliado(Equipo aliados);
+        void cañonazo(shared_ptr<personaje> enemigo);
     
-
 };
 #endif

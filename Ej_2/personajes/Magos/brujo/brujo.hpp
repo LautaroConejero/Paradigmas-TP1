@@ -12,10 +12,11 @@ enum MALDICIONES{
 
 class brujo : public Magos {
     private:
-        bool estado_frenesi;
+        bool estado_frenesi; // puede seguir peleando aunque haya perdido toda su vida
 
     public:
-        brujo(int v, int a, int rm, int m, string n);
+        brujo(string n);
+        string Get_grupo() const override;
         void maldecir_enemigo(shared_ptr<personaje> enemigo);
         void control_mental(vector<shared_ptr<personaje>> enemigos);
         void estado_de_frenesi();

@@ -7,13 +7,22 @@
 class paladin : public Guerreros {
     private:
         bool escudo;
-        int fe; // aumenta porcentualmente la vida y la estamina
+        int fe; 
+        int vida_fe; 
+        int estamina_fe; 
+        int daño_fe;
     public:
-        paladin(int v, int a, int rm, int e, string n);
-        void usar_escudo(shared_ptr<personaje> aliado);
-        void aumentar_la_fe();
-        void bendecir_arma(); // consume fe
-        int golpe_divino();
+        paladin(string n);
+        string Get_grupo() const override;
+        int Get_vida() const override;
+        void usar_escudo();
+        void aumentar_la_fe(int daño_infligido); 
+        void aplicar_fe();
+        void atacar_con_arma(shared_ptr<personaje> enemigo) override;
+        void ataque_rapido(shared_ptr<personaje> enemigo) override; 
+        void recibir_ataque(int daño, TIPO_DAÑO tipo, bool ignorar_armadura) override;
+        void bendecir_armas(); // consume fe
+        void golpe_divino(shared_ptr<personaje> enemigo); // consume fe
 };
 
 #endif

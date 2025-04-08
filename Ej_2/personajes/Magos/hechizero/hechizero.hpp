@@ -8,20 +8,23 @@ class hechizero : public Magos {
     private:
         int escudos_magicos;
         int escudos_fisicos;
-        vector<shared_ptr<personaje>> clones;
+        int cant_clones;
+        bool clonado;
 
 
 
     public:
-        hechizero(int v, int a, int rm, int m, string n);
-        void confunsion(shared_ptr<personaje> enemigo);
+        hechizero(string n);
+        string Get_grupo() const override;
+        void confusion(shared_ptr<personaje> enemigo);
         void escudo_magico();
         void escudo_fisico();
+        void recibir_ataque(int daño, TIPO_DAÑO tipo, bool ignorar_armadura) override;
         void restablecer_mana();
         void pocion_de_vida(shared_ptr<personaje> aliado);
         void clonar();
         void potenciar_aliado(shared_ptr<personaje> aliado);
-        int rayo_arcano();
+        void rayo_arcano(shared_ptr<personaje> enemigo);
 
 
 

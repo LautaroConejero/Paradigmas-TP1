@@ -14,23 +14,34 @@ class Magos : public personaje {
         int daño_fisico;
         int daño_magico;
         int mana;
-        int regeneracion_de_mana;
-        pair<shared_ptr<arma>, shared_ptr<arma>> armas;
+        int mana_maximo;
         string nombre;
+        pair<shared_ptr<arma>, shared_ptr<arma>> armas;
 
     public:
-        Magos(int v, int a, int rm, int m, string n);
-        virtual bool Esta_vivo() override;
-        virtual string Get_nombre() override;
-        virtual int Get_vida() override;
-        virtual int Get_armadura() override;
-        virtual int Get_resistencia_m() override;
-        virtual int Get_mana();
-        virtual void recibir_ataque(int daño) override;
-        virtual void equipar_armas(shared_ptr<arma> a) override;
-        virtual string Get_armas() override;
-        virtual int ataque_rapido() override;
-        virtual int atacar_con_arma() override;
+        Magos(int a, int rm, int m, int mm, int dm, string n);
+        bool Esta_vivo() const override;
+        string Get_nombre() const override;
+
+        int Get_dano_fisico() const override;
+        int Get_dano_magico() const override;
+
+        int Get_vida() const override;
+        int Get_vida_maxima() const override;
+        void morir(int vida_restante) override;
+        int Get_armadura() const override;
+        int Get_resistencia_m() const override;
+
+        int Get_mana() const;
+        virtual void recibir_ataque(int daño, TIPO_DAÑO tipo, bool ignorar_armadura) override;
+        
+        void equipar_arma(shared_ptr<arma> a) override;
+        void eliminar_arma(int posicion) override;
+        pair<shared_ptr<arma>,shared_ptr<arma>> Get_armas() override;
+        
+        void ataque_rapido(shared_ptr<personaje> enemigo) override;
+        void atacar_con_arma(shared_ptr<personaje> enemigo) override;
+        void recibir_efecto(EFFECTO efecto) override;
         
 };
 

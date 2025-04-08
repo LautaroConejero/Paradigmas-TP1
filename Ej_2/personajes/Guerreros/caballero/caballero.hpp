@@ -9,7 +9,8 @@ class caballero : public Guerreros {
         shared_ptr<personaje> protegido;
 
     public:
-        caballero(int v, int a, int rm, int e, string n);
+        caballero(string n);
+        string Get_grupo() const override;
         void juramento_de_proteccion(shared_ptr<personaje> aliado);
         
 

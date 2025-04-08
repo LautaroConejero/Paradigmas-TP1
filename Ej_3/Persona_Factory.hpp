@@ -12,6 +12,7 @@
 #include "../Ej_2/personajes/Guerreros/paladin/paladin.hpp"
 #include "../Ej_2/personajes/Guerreros/caballero/caballero.hpp"
 #include "../Ej_2/personajes/Guerreros/gladiador/gladiador.hpp"
+#include "../Ej_2/personajes/Guerreros/barbaro/barbaro.hpp"
 
 #include <memory>
 using namespace std;

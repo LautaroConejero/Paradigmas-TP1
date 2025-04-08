@@ -13,11 +13,12 @@ enum INVOCAIONES_ANIMALES{
 
 class conjurador : public Magos {
     private:
-        vector<shared_ptr<arma>> invocaciones_vivas;
         int invocaciones_maximas;
+        vector<shared_ptr<arma>> invocaciones_vivas;
     
     public:
-        conjurador(int v, int a, int rm, int m, string n);
+        conjurador(string n);
+        string Get_grupo() const override;
         void invocar_animal();
         int ataque_con_invocacion();
         void paralisis(shared_ptr<personaje> enemigo);

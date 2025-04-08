@@ -4,88 +4,37 @@
 
 shared_ptr<personaje> PersonajeFactory::Crear_personajes(int des){
     // random
+    int personaje_tipo;
+    int tipo;
     if (des == 2){
-        int tipo = rand() % 2;
-        int personaje_tipo;
-        switch (tipo){
-            case 0:
-                personaje_tipo = rand() % 4;
-                personaje_tipo = static_cast<MAGOS>(personaje_tipo);
-                // switch(personaje_tipo){
-                //     case HECHICERO:
-                //         return make_shared<Hechizero>();
-                //         break;
-                //     case CONJURADOR:
-                //         return make_shared<Conjurador>();
-                //         break;
-                //     case BRUJO:
-                //         return make_shared<Brujo>();
-                //         break;
-                //     case NIGROMANTE:
-                //         return make_shared<Nigromante>();
-                //         break;
-                // }
-                break;
-            case 1:
-                personaje_tipo = rand() % 5;
-                personaje_tipo = static_cast<GUERREROS>(personaje_tipo);
-                // switch(personaje_tipo){
-                //     case BARBARO:
-                //         return make_shared<Barbaro>();
-                //         break;
-                //     case PALADIN:
-                //         return make_shared<Paladin>();
-                //         break;
-                //     case CABALLERO:
-                //         return make_shared<Caballero>();
-                //         break;
-                //     case MERCENARIO:
-                //         return make_shared<Mercenario>();
-                //         break;
-                //     case GLADIADOR:
-                //         return make_shared<Gladiador>();
-                //         break;
-                // }
-                break;
+        tipo = rand() % 2 + 1;
+        if (tipo == 0){
+            personaje_tipo = rand() % 4;
+        }
+        else{
+            personaje_tipo = rand() % 5;
         }
     }
     else {
         cout << "Elija la categoria de personaje: " << endl;
         cout << "1. Magos" << endl;
         cout << "2. Guerreros" << endl;
-        int opcion;
-        cin >> opcion;
-        while (opcion != 1 && opcion != 2){
+        cin >> tipo;
+        while (tipo != 1 && tipo != 2){
             cout << "Opcion invalida. Elija nuevamente: " << endl;
-            cin >> opcion;
+            cin >> tipo;
         }
-        int tipo_personaje;
-        if (opcion == 1){
+        if (tipo == 1){
             cout << "Elija el tipo de personaje: " << endl;
             cout << "0. Hechicero" << endl;
             cout << "1. Conjurador" << endl;
             cout << "2. Brujo" << endl;
             cout << "3. Nigromante" << endl;
-            cin >> tipo_personaje;
-            while (tipo_personaje < 1 || tipo_personaje > 4){
+            cin >> personaje_tipo;
+            while (personaje_tipo < 0 || personaje_tipo > 3){
                 cout << "Opcion invalida. Elija nuevamente: " << endl;
-                cin >> tipo_personaje;
+                cin >> personaje_tipo;
             }
-            tipo_personaje = static_cast<MAGOS>(tipo_personaje);
-            // switch(tipo_personaje){
-            //     case HECHICERO:
-            //         return make_shared<Hechizero>();
-            //         break;
-            //     case CONJURADOR:
-            //         return make_shared<Conjurador>();
-            //         break;
-            //     case BRUJO:
-            //         return make_shared<Brujo>();
-            //         break;
-            //     case NIGROMANTE:
-            //         return make_shared<Nigromante>();
-            //         break;
-            // }
         }
         else {
             cout << "Elija el tipo de personaje: " << endl;
@@ -94,32 +43,53 @@ shared_ptr<personaje> PersonajeFactory::Crear_personajes(int des){
             cout << "2. Caballero" << endl;
             cout << "3. Mercenario" << endl;
             cout << "4. Gladiador" << endl;
-            cin >> tipo_personaje;
-            while (tipo_personaje < 1 || tipo_personaje > 5){
+            cin >> personaje_tipo;
+            while (personaje_tipo < 0 || personaje_tipo > 4){
                 cout << "Opcion invalida. Elija nuevamente: " << endl;
-                cin >> tipo_personaje;
-            }
-            tipo_personaje = static_cast<GUERREROS>(tipo_personaje);
-            // switch(tipo_personaje){
-            //     case BARBARO:
-            //         return make_shared<Barbaro>();
-            //         break;
-            //     case PALADIN:
-            //         return make_shared<Paladin>();
-            //         break;
-            //     case CABALLERO:
-            //         return make_shared<Caballero>();
-            //         break;
-            //     case MERCENARIO:
-            //         return make_shared<Mercenario>();
-            //         break;
-            //     case GLADIADOR:
-            //         return make_shared<Gladiador>();
-            //         break;
-            // } 
-         }
+                cin >> personaje_tipo;
+            }  
+        }
     }
-    return nullptr; 
+    switch (tipo){
+        case 1:
+            personaje_tipo = static_cast<MAGOS>(personaje_tipo);
+            switch(personaje_tipo){
+                case HECHICERO:
+                    return make_shared<hechizero>("Lauti");
+                    break;
+                case CONJURADOR:
+                    return make_shared<conjurador>("Lauti");
+                    break;
+                case BRUJO:
+                    return make_shared<brujo>("Lauti");
+                    break;
+                case NIGROMANTE:
+                    return make_shared<nigromante>("Lauti");
+                    break;
+            }
+            break;
+        case 2:
+            personaje_tipo = static_cast<GUERREROS>(personaje_tipo);
+            switch(personaje_tipo){
+                case BARBARO:
+                    return make_shared<barbaro>("Lauti");
+                    break;
+                case PALADIN:
+                    return make_shared<paladin>("Lauti");
+                    break;
+                case CABALLERO:
+                    return make_shared<caballero>("Lauti");
+                    break;
+                case MERCENARIO:
+                    return make_shared<mercenario>("Lauti");
+                    break;
+                case GLADIADOR:
+                    return make_shared<gladiador>("Lauti");
+                    break;
+            }
+            break;
+    }
+    return nullptr;
 }
 
 shared_ptr<arma> PersonajeFactory::Crear_arma(int des){
@@ -251,7 +221,7 @@ shared_ptr<personaje> PersonajeFactory::Equipar_personaje(int opcion, int cantid
     cout << "Tu " << personaje->Get_nombre() << " tiene " << cantidad_armas << " armas." << endl;
     for (int i = 0; i < cantidad_armas; i++){
         shared_ptr<arma> arma = Crear_arma(opcion);
-        personaje->equipar_armas(arma);
+        personaje->equipar_arma(arma);
     }
     return personaje;
 }
