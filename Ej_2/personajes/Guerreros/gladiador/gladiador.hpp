@@ -8,16 +8,33 @@ class gladiador : public Guerreros {
         int honor;
         int adrenalina;
         int capacidad_esquivar;
+
+        bool esquivar_activado;
+        int capacidad_adrenalina;
+
         bool furia_activada;
+        int armadura_adrenalina;
+
+        bool espiritu_activado;
+        bool espiritu_usado;
+        int cantidad_efectos_no_recibidos;
+        int daño_honor;
+        
     
     public:
         gladiador(string n);
         string Get_grupo() const override;
         void aumentar_adrenalina(int daño_infligido);
+        void aplicar_adrenalina(); // aumenta esquivar y armadura
         void embestida(shared_ptr<personaje> enemigo);
         void entretener_al_publico();
-        void furia_romana();
+        void aplicar_honor(); // aumenta el daño fisico y la armadura, si el honor es mayor a 50
+        void recibir_ataque(int daño, TIPO_DAÑO tipo, bool ignorar_armadura) override;
+        void recibir_efecto(EFFECTO efecto) override;
+        void ataque_rapido(shared_ptr<personaje> enemigo) override;
+        void atacar_con_arma(shared_ptr<personaje> enemigo) override;
         void espiritu_de_Julio_Cesar(); // ignora effectos negativos
+                                        // meterle que pueda atacar extra
 };
 
 #endif

@@ -18,6 +18,14 @@ class Guerreros : public personaje {
         int estamina_maxima;
         string nombre;
         pair<shared_ptr<arma>, shared_ptr<arma>> armas;
+        vector<shared_ptr<EfectoActivo>> efectos;
+        bool paralizado = false;
+        bool confundido = false;
+        bool asustado = false;
+        bool quemado = false;
+        bool hemorragia = false;
+        bool potenciado = false;
+        bool protegido = false;
 
     public:
         Guerreros(int a, int rm, int e, int em, int df, string n);
@@ -42,6 +50,7 @@ class Guerreros : public personaje {
         void ataque_rapido(shared_ptr<personaje> enemigo) override;
         void atacar_con_arma(shared_ptr<personaje> enemigo) override;
         void recibir_efecto(EFFECTO efecto) override;
+        void procesar_efectos() override;
 };
 
 #endif

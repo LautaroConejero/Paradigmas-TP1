@@ -163,9 +163,10 @@ void paladin::golpe_divino(shared_ptr<personaje> enemigo) {
         return;
     }
     if (this->fe >= 35) {
-        this->fe -= 35;
         cout << "El paladin ha llamado a la luz para hacer un golpe divino." << endl;
         enemigo->recibir_ataque(35+this->daño_fe, MAGICO, true);
+        this->fe -= 35;
+        aplicar_fe();
     } else {
         cout << "No hay suficiente fe para usar el golpe divino." << endl;
     }

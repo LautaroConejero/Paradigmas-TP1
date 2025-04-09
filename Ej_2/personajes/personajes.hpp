@@ -4,23 +4,28 @@
 #define FISICO_BASICO 5
 #define MAGICO_BASICO 0
 
-enum EFFECTO{
-    PARALIZAR,
-    CONFUSION,
-    ENVENENAR,
-    MIEDO,
-    INMOVILIZAR,
-    QUEMADURA,
-    POTENCIAR_ALIADO
-};
-
 #include <iostream>
 #include <string>
 #include <memory>
 #include "../armas/armas.hpp"
 #include <vector>
-
 using namespace std;
+
+enum EFFECTO{
+    PARALIZAR,
+    CONFUSION,
+    MIEDO,
+    ENVENENAR,
+    QUEMADURA,
+    HEMORRAGIA,
+    POTENCIAR_ALIADO,
+    PROTECCION
+};
+
+struct EfectoActivo {
+    EFFECTO tipo;
+    int duracion_restante;
+};
 
 class personaje{
     public:
@@ -36,13 +41,14 @@ class personaje{
         virtual void morir(int vida_restante) = 0;
         virtual void recibir_ataque(int daño, TIPO_DAÑO tipo, bool ignorar_armadura) = 0;
         virtual void recibir_efecto(EFFECTO efecto) = 0;
+        virtual void procesar_efectos() = 0;
         virtual void equipar_arma(shared_ptr<arma> a) = 0;
         virtual pair<shared_ptr<arma>,shared_ptr<arma>> Get_armas() = 0;
         virtual void eliminar_arma(int posicion) = 0;
         virtual void ataque_rapido(shared_ptr<personaje> enemigo) = 0;
         virtual void atacar_con_arma(shared_ptr<personaje> enemigo) = 0;
         //virtual void elegir_ataque(shared_ptr<personaje> enemigo) = 0;
-        // virtual void usar_habilidad() = 0;
+        //virtual void usar_habilidad(vector<shared_ptr<personaje> aliados, vector<shared_ptr<personaje> enemigos) = 0;
 
 
 

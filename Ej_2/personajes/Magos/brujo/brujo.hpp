@@ -3,17 +3,17 @@
 #include "../../Magos/Magos.hpp"
 
 
-enum MALDICIONES{
-    INMOVILIZACION,
-    ENVENENAMIENTO,
-    HEMORRAGIA,
-    MALA_SUERTE
-};
+// enum MALDICIONES{
+//     INMOVILIZACION,
+//     ENVENENAMIENTO,
+//     HEMORRAGIA,
+//     MALA_SUERTE
+// };
 
 class brujo : public Magos {
     private:
         bool estado_frenesi; // puede seguir peleando aunque haya perdido toda su vida
-
+        bool demonio_invocado; // puede invocar un demonio para que lo ayude en la batalla
     public:
         brujo(string n);
         string Get_grupo() const override;

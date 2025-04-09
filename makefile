@@ -1,7 +1,7 @@
 CXX = g++
 CXXFLAGS = -std=c++17 -Wall
 
-SRC = $(shell find Ej_2 Ej_3 Ej_4 Testeo_combate -name "*.cpp") main.cpp
+SRC = $(shell find Ej_1 Ej_2 Ej_3 Ej_4 Testeo_combate -name "*.cpp") main.cpp
 OBJ = $(patsubst %.cpp, %.o, $(SRC))
 EXEC = main.exe
 
