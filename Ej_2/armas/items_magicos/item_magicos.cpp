@@ -1,8 +1,17 @@
 #include "item_magicos.hpp"
 
 Item_magicos::Item_magicos(string n, int dm, int d, float c):
-nombre(n), durabilidad(d), daño_fisico(0), daño_magico(dm), chance_critico(c)
- {}
+nombre(n), durabilidad(d), daño_fisico(0), daño_magico(dm), chance_critico(c){
+    int encantamiento = rand() % 6;
+    switch(encantamiento) {
+        case 0: this->encantamiento = FUEGO; break;
+        case 1: this->encantamiento = AGUA; break;
+        case 2: this->encantamiento = TIERRA; break;
+        case 3: this->encantamiento = AIRE; break;
+        case 4: this->encantamiento = ELECTRICIDAD; break;
+        case 5: this->encantamiento = HIELO; break;
+    }
+}
 
 string Item_magicos::Get_nombre() const {
     return this->nombre + "de " + Get_encantamiento();

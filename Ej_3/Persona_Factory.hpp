@@ -14,6 +14,21 @@
 #include "../Ej_2/personajes/Guerreros/gladiador/gladiador.hpp"
 #include "../Ej_2/personajes/Guerreros/barbaro/barbaro.hpp"
 
+// ARMAS_COMBATE
+#include "../Ej_2/armas/armas_combate/hacha_simple/hacha_simple.hpp"
+#include "../Ej_2/armas/armas_combate/hacha_doble/hacha_doble.hpp"
+#include "../Ej_2/armas/armas_combate/espada/espada.hpp"
+#include "../Ej_2/armas/armas_combate/lanza/lanza.hpp"
+#include "../Ej_2/armas/armas_combate/garrote/garrote.hpp"
+
+// ITEMS_MAGICOS
+#include "../Ej_2/armas/items_magicos/baston/baston.hpp"
+#include "../Ej_2/armas/items_magicos/libro_de_hechizos/libro.hpp"
+#include "../Ej_2/armas/items_magicos/pocion/pocion.hpp"
+#include "../Ej_2/armas/items_magicos/amuleto/amuleto.hpp"
+
+
+
 #include <memory>
 using namespace std;
 

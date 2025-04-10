@@ -62,7 +62,7 @@ int lanza::estocada() {
     }
 }
 
-int lanza::Atacar() {
+pair<int, TIPO_DAÑO> lanza::Atacar() {
     efecto_arma = NINGUNO;
     ignorar_armadura = false;
 
@@ -79,5 +79,5 @@ int lanza::Atacar() {
         cout << "Golpe critico!" << endl;
         daño *= 2;
     }
-    return daño;
+    return {daño, FISICO};
 }

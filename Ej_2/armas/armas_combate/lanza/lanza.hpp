@@ -13,7 +13,6 @@ class lanza : public ArmaCombate {
         void cortar_lanza_mitad();
 
         int arrojar_lanza();
-        int arrojar_lanza();
         int estocada();
 
         pair<int, TIPO_DAÑO> Atacar() override;

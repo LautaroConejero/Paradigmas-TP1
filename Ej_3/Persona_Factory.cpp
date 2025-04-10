@@ -8,7 +8,7 @@ shared_ptr<personaje> PersonajeFactory::Crear_personajes(int des){
     int tipo;
     if (des == 2){
         tipo = rand() % 2 + 1;
-        if (tipo == 0){
+        if (tipo == 1){
             personaje_tipo = rand() % 4;
         }
         else{
@@ -94,64 +94,31 @@ shared_ptr<personaje> PersonajeFactory::Crear_personajes(int des){
 
 shared_ptr<arma> PersonajeFactory::Crear_arma(int des){
     // random
+    int tipo;
+    int arma_tipo;
     if (des == 2){
-        int tipo = rand() % 2;
-        int arma_tipo;
-        switch (tipo){
-            case 0:
+        tipo = rand() % 2 + 1;
+        if (des == 2){
+            tipo = rand() % 2 + 1;
+            if (tipo == 1){
                 arma_tipo = rand() % 5;
-                arma_tipo = static_cast<ARMA_COMBATE>(arma_tipo);
-                // switch(arma_tipo){
-                //     case HACHA_SIMPLE:
-                //         return make_shared<Hacha_simple>();
-                //         break;
-                //     case HACHA_DOBLE:
-                //         return make_shared<Hacha_doble>();
-                //         break;
-                //     case ESPADA:
-                //         return make_shared<Espada>();
-                //         break;
-                //     case LANZA:
-                //         return make_shared<Lanza>();
-                //         break;
-                //     case GARROTE:
-                //         return make_shared<Garrrote>();
-                //         break;
-                // }
-                break;
-            case 1:
+            }
+            else{
                 arma_tipo = rand() % 4;
-                arma_tipo = static_cast<ITEM_MAGICOS>(arma_tipo);
-                // switch(arma_tipo){
-                //     case BASTON:
-                //         return make_shared<Baston>();
-                //         break;
-                //     case LIBRO_DE_HECHIZOS:
-                //         return make_shared<Libro_de_hechizos>();
-                //         break;
-                //     case POCION:
-                //         return make_shared<Pocion>();
-                //         break;
-                //     case AMULETO:
-                //         return make_shared<Amuleto>();
-                //         break;
-                // }
-                break;
+            }
         }
     }
     else{
         cout << "Elija la categoria de arma: " << endl;
         cout << "1. Armas de combate" << endl;
         cout << "2. Items magicos" << endl;
-        int opcion;
-        cin >> opcion;
-        while (opcion != 1 && opcion != 2){
+        cin >> tipo;
+        while (tipo != 1 && tipo != 2){
             cout << "Opcion invalida. Elija nuevamente: " << endl;
-            cin >> opcion;
+            cin >> tipo;
         }
-        int arma_tipo;
 
-        if (opcion == 1){
+        if (tipo == 1){
             cout << "Elija el tipo de arma: " << endl;
             cout << "0. Hacha simple" << endl;
             cout << "1. Hacha doble" << endl;
@@ -163,26 +130,6 @@ shared_ptr<arma> PersonajeFactory::Crear_arma(int des){
                 cout << "Opcion invalida. Elija nuevamente: " << endl;
                 cin >> arma_tipo;
             }
-
-            arma_tipo = static_cast<ARMA_COMBATE>(arma_tipo);
-            
-            // switch(arma_tipo){
-            //     case HACHA_SIMPLE:
-            //         return make_shared<Hacha_simple>();
-            //         break;
-            //     case HACHA_DOBLE:
-            //         return make_shared<Hacha_doble>();
-            //         break;
-            //     case ESPADA:
-            //         return make_shared<Espada>();
-            //         break;
-            //     case LANZA:
-            //         return make_shared<Lanza>();
-            //         break;
-            //     case GARROTE:
-            //         return make_shared<Garrrote>();
-            //         break; 
-            // }
         }
         else {
             cout << "Elija el tipo de item magico: " << endl;
@@ -195,23 +142,46 @@ shared_ptr<arma> PersonajeFactory::Crear_arma(int des){
                 cout << "Opcion invalida. Elija nuevamente: " << endl;
                 cin >> arma_tipo;
             }
-
-            arma_tipo = static_cast<ITEM_MAGICOS>(arma_tipo);
-            // switch(arma_tipo){
-            //     case BASTON:
-            //         return make_shared<Baston>();
-            //         break;
-            //     case LIBRO_DE_HECHIZOS:
-            //         return make_shared<Libro_de_hechizos>();
-            //         break;
-            //     case POCION:
-            //         return make_shared<Pocion>();
-            //         break; 
-            //     case AMULETO:
-            //         return make_shared<Amuleto>();
-            //         break; 
-            // }
         }
+    } 
+    switch(tipo){
+        case 1:
+            arma_tipo = static_cast<ARMA_COMBATE>(arma_tipo);
+            
+            switch(arma_tipo){
+                case HACHA_SIMPLE:
+                    return make_shared<hacha_simple>();
+                    break;
+                case HACHA_DOBLE:
+                    return make_shared<hacha_doble>();
+                    break;
+                case ESPADA:
+                    return make_shared<espada>();
+                    break;
+                case LANZA:
+                    return make_shared<lanza>();
+                    break;
+                case GARROTE:
+                    return make_shared<garrote>();
+                    break; 
+            }
+            break;
+        case 2:
+            arma_tipo = static_cast<ITEM_MAGICOS>(arma_tipo);
+            switch(arma_tipo){
+                case BASTON:
+                    return make_shared<baston>();
+                    break;
+                case LIBRO_DE_HECHIZOS:
+                    return make_shared<libro_de_hechizos>();
+                    break;
+                case POCION:
+                    return make_shared<pocion>();
+                    break; 
+                case AMULETO:
+                    return make_shared<amuleto>();
+                    break; 
+            }
     }
     return nullptr;
 }

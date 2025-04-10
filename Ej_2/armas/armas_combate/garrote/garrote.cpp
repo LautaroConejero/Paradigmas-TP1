@@ -1,6 +1,6 @@
 #include "garrote.hpp"
 
-garrote::garrote(string n, int df, int d, float c) :
+garrote::garrote(int df, int d, float c) :
 ArmaCombate("Garrote", df, d, c) {
 }
 

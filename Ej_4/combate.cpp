@@ -1,6 +1,7 @@
 #include "combate.hpp"
 
 int Decision_juego(){
+    cout << endl;
     cout << "Momento de elegir el movimento" << endl;
     cout << "1. Golpe fuerte" << endl;
     cout << "2. Golpe rapido" << endl;
@@ -53,6 +54,7 @@ void Accion_juego(int decision, shared_ptr<personaje>& jugador, shared_ptr<perso
     DECISION_JUEGO decision_juego_maquina = static_cast<DECISION_JUEGO>(decision_maquina);
     int resultado = Ganador(decision_juego, decision_juego_maquina);
     cout << "El enemigo ha elegido: " << decision_maquina << endl;
+    cout << endl;
     switch (resultado) {
         case -1:
             cout << "Empataste el turno!" << endl;
@@ -75,7 +77,7 @@ void Accion_juego(int decision, shared_ptr<personaje>& jugador, shared_ptr<perso
                     cout << " y le hizo 10 de daño!" << endl;
                 }
 
-            
+            cout << endl;
             cout << "Tu vida es: " << jugador->Get_vida() << endl;
             cout << "La vida del enemigo es: " << enemigo->Get_vida() << endl;
             break;
@@ -141,7 +143,7 @@ int consola_combate(){
     }
 
     shared_ptr<personaje> jugador = PersonajeFactory::Equipar_personaje(decision, cantidad_armas);
-    shared_ptr<personaje> enemigo = PersonajeFactory::Equipar_personaje(1, cantidad_armas);
+    shared_ptr<personaje> enemigo = PersonajeFactory::Equipar_personaje(2, cantidad_armas);
     cout << "Tu personaje es: " << jugador->Get_nombre() << endl;
     cout << "El enemigo es: " << enemigo->Get_nombre() << endl;
 

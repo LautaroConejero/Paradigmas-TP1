@@ -1,6 +1,6 @@
 #include "espada.hpp"
 
-espada::espada(string n, int df, int d, float c) : 
+espada::espada(int df, int d, float c) : 
 ArmaCombate("Espada", df, d, c) {
 }
 
@@ -78,4 +78,4 @@ pair<int, TIPO_DAÑO> espada::Atacar() {
         daño *= 2;
     }
     return {daño, FISICO};
-}
+} 
