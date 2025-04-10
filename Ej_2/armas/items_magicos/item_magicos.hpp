@@ -1,36 +1,34 @@
-#ifndef ARMAS_COMBATE_HPP
-#define ARMAS_COMBATE_HPP
+#ifndef ITEM_MAGICOS_HPP
+#define ITEM_MAGICOS_HPP
 
 #include "../armas.hpp"
 
-enum MATERIALES {
-    HIERRO,
-    ACERO,
-    ORO,
-    PLATA,
-    MADERA,
-    PIEDRA
+enum ENCANTAMIENTO{
+    FUEGO,
+    AGUA,
+    TIERRA,
+    AIRE,
+    ELECTRICIDAD,
+    HIELO
 };
 
-class ArmaCombate : public arma {
+class Item_magicos : public arma {
     protected:
         string nombre;
+        int durabilidad;
         int daño_fisico;
         int daño_magico;
-        int durabilidad;
         float chance_critico;
-        MATERIALES material;
-        bool ignorar_armadura = false;
-        EFFECTO efecto_arma = NINGUNO;
+        ENCANTAMIENTO encantamiento;
     
     public:
-        ArmaCombate(string n, int df, int d, float c);
+        Item_magicos(string n, int d, int dm, float c);
         string Get_nombre() const override;
         int Get_durabilidad() const override;
         int Get_daño_fisico() const override;
         int Get_daño_magico() const override;
         float Get_chance_critico() const;
-        string Get_material() const;  
+        string Get_encantamiento() const;
 };
 
 #endif

@@ -5,8 +5,6 @@
 
 class caballero : public Guerreros {
     private:
-        bool proteccion;
-        shared_ptr<personaje> protegido;
 
     public:
         caballero(string n);

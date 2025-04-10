@@ -170,9 +170,9 @@ void paladin::atacar_con_arma(shared_ptr<personaje> enemigo) {
 
     pair<int, TIPO_DAÑO> daño;
     if (opcion == 1) {
-        daño = armas.first->Elegir_ataque();
+        daño = armas.first->Atacar();
     } else {
-        daño = armas.second->Elegir_ataque();
+        daño = armas.second->Atacar();
     }
 
     if (daño.second == FISICO) {

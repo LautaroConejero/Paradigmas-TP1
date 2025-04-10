@@ -11,18 +11,6 @@
 #include <vector>
 using namespace std;
 
-enum EFFECTO{
-    PARALIZAR,
-    CONFUSION,
-    MIEDO,
-    ENVENENAR,
-    QUEMADURA,
-    HEMORRAGIA,
-    POTENCIAR_ALIADO,
-    PROTECCION,
-    INMORTALIDAD
-};
-
 struct EfectoActivo {
     EFFECTO tipo;
     int duracion_restante;
@@ -48,10 +36,6 @@ class personaje{
         virtual void eliminar_arma(int posicion) = 0;
         virtual void ataque_rapido(shared_ptr<personaje> enemigo) = 0;
         virtual void atacar_con_arma(shared_ptr<personaje> enemigo) = 0;
-        //virtual void elegir_ataque(shared_ptr<personaje> enemigo) = 0;
-        //virtual void usar_habilidad(vector<shared_ptr<personaje> aliados, vector<shared_ptr<personaje> enemigos) = 0;
-
-
 
 };
 

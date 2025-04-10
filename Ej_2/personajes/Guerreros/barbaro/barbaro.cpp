@@ -195,9 +195,9 @@ void barbaro::atacar_con_arma(shared_ptr<personaje> enemigo) {
 
     pair<int, TIPO_DAÑO> daño;
     if (opcion == 1) {
-        daño = armas.first->Elegir_ataque();
+        daño = armas.first->Atacar();
     } else {
-        daño = armas.second->Elegir_ataque();
+        daño = armas.second->Atacar();
     }
 
     if (daño.second == FISICO) {
@@ -251,7 +251,11 @@ void barbaro::recibir_efecto(EFFECTO efecto) {
         case INMORTALIDAD:
             duracion = 3;
             break;
+        default:
+            duracion = 0;
+            break;
     }
+
     shared_ptr<EfectoActivo> efecto_activo = make_shared<EfectoActivo>();
     efecto_activo->tipo = efecto;
     efecto_activo->duracion_restante = duracion;
