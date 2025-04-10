@@ -30,6 +30,13 @@ void hechizero::escudo_fisico(){
 }
 
 void hechizero::recibir_ataque(int daño, TIPO_DAÑO tipo, bool ignorar_armadura) {
+    if (protegido) {
+        int mitigacion = rand() % 81 + 20; // 20% a 100% de mitigación
+        int daño_mitigado = daño * mitigacion / 100; 
+        daño -= daño_mitigado;
+        cout << Get_nombre() << " está protegido y recibe solo " << daño << " de daño." << endl;
+    }
+
     if (clonado == true){
         int probabilida_fallar = 15*cant_clones;
         int probabilidad = rand() % 100 + 1;
@@ -43,6 +50,12 @@ void hechizero::recibir_ataque(int daño, TIPO_DAÑO tipo, bool ignorar_armadura
             return;
         }
     }
+
+    if (asustado) {
+        daño *= 1.3;
+        cout << Get_nombre() << " está asustado y recibe daño aumentado." << endl;
+    }
+
     if (ignorar_armadura == true){
         this->vida -= daño;
         cout << "El hechizero ha recibido " << daño << " de daño." << endl;
@@ -66,10 +79,8 @@ void hechizero::recibir_ataque(int daño, TIPO_DAÑO tipo, bool ignorar_armadura
         }
     }
     if (this->vida < 0) {
-        this->vida = 0;
-        this->vivo = false;
+        this->morir(0);
     }
-    return;
 }
 
 void hechizero::confusion(shared_ptr<personaje> enemigo){

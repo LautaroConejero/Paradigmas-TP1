@@ -76,8 +76,7 @@ void Guerreros::recibir_ataque(int daño, TIPO_DAÑO tipo, bool ignorar_armadura
     }
 
     if (vida <= 0) {
-        vida = 0;
-        vivo = false;
+        this->morir(0);
         cout << Get_nombre() << " ha muerto." << endl;
     }
 }
@@ -216,6 +215,9 @@ void Guerreros::recibir_efecto(EFFECTO efecto) {
         case PROTECCION:
             duracion = 2;
             break;
+        case INMORTALIDAD:
+            duracion = 3;
+            break;
     }
     shared_ptr<EfectoActivo> efecto_activo = make_shared<EfectoActivo>();
     efecto_activo->tipo = efecto;
@@ -277,6 +279,10 @@ void Guerreros::procesar_efectos() {
 
             case PROTECCION:
                 protegido = true;
+                break;
+            
+            case INMORTALIDAD:
+                inmortal = true;
                 break;
         }
 

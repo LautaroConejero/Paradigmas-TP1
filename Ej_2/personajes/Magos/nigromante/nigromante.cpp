@@ -110,6 +110,13 @@ void nigromante::atacar_con_invocacion(shared_ptr<personaje> enemigo) {
 }
 
 void nigromante::recibir_ataque(int daño, TIPO_DAÑO tipo, bool ignorar_armadura) {
+    if (protegido) {
+        int mitigacion = rand() % 81 + 20; // 20% a 100% de mitigación
+        int daño_mitigado = daño * mitigacion / 100; 
+        daño -= daño_mitigado;
+        cout << Get_nombre() << " está protegido y recibe solo " << daño << " de daño." << endl;
+    }
+
     if (!invocaciones.empty()) {
         for (size_t i = 0; i < invocaciones.size(); i++){
             if (invocaciones[i].second < daño){
@@ -126,23 +133,28 @@ void nigromante::recibir_ataque(int daño, TIPO_DAÑO tipo, bool ignorar_armadur
             }
         }
     }
-    if (ignorar_armadura == true) {
-        this->vida -= daño;
-        return;
+    
+    if (asustado) {
+        daño *= 1.3;
+        cout << Get_nombre() << " está asustado y recibe daño aumentado." << endl;
     }
 
-    if (tipo == FISICO) {
-        this->vida -= daño*(1 - this->armadura/100.0);
-    } else if (tipo == MAGICO) {
-        this->vida -= daño*(1 - this->resistencia_magica/100.0);
+    if (ignorar_armadura) {
+        vida -= daño;
+    } else {
+        if (tipo == FISICO) {
+            vida -= daño * (1 - armadura / 100.0);
+        } else if (tipo == MAGICO) {
+            vida -= daño * (1 - resistencia_magica / 100.0);
+        }
     }
-    if (this->vida <= 0) {
-        this->vida = 0;
-        this->vivo = false;
+
+    if (vida <= 0) {
+        vida = 0;
+        vivo = false;
+        cout << Get_nombre() << " ha muerto." << endl;
     }
-    return;
 }
-
 void nigromante::reino_de_los_muertos(shared_ptr<personaje> enemigo) {
     if (mana < 65){
         cout << "No hay mana suficiente." << endl;

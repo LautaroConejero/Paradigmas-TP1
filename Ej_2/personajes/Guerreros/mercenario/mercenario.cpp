@@ -63,6 +63,20 @@ void mercenario::aplicar_oro() {
 }
 
 void mercenario::ataque_rapido(shared_ptr<personaje> enemigo) {
+    if (paralizado) {
+        cout << Get_nombre() << " está paralizado y no puede atacar este turno." << endl;
+        return;
+    }
+
+    if (confundido) {
+        int prob = rand() % 100;
+        if (prob < 35) {
+            recibir_ataque(daño_fisico + daño_magico, FISICO, false);
+            cout << Get_nombre() << " se ha atacado a sí mismo por confusión." << endl;
+            return;
+        }
+    }
+
     int daño;
     if (armas.first == nullptr) {
         daño = daño_fisico;
@@ -72,6 +86,12 @@ void mercenario::ataque_rapido(shared_ptr<personaje> enemigo) {
     } else {
         daño = daño_fisico + armas.first->Get_daño_fisico() + armas.second->Get_daño_fisico();
     }
+
+    if (quemado) {
+        daño *= 0.8;
+        cout << Get_nombre() << " está quemado y su daño fue reducido." << endl;
+    }
+
     int daño_critico = 0;
     if (rand() % 100 < critico_oro) {
         daño_critico = daño;

@@ -11,19 +11,30 @@ enum INVOCAIONES_ANIMALES{
     SERPIENTE
 };
 
+struct InvocacionAnimal {
+    INVOCAIONES_ANIMALES tipo;
+    int vida;
+    int daño_fisico;
+    float prob_efecto;
+    EFFECTO efecto_asociado;
+    bool usada = false;
+    
+};
+
 class conjurador : public Magos {
     private:
         int invocaciones_maximas;
-        vector<shared_ptr<arma>> invocaciones_vivas;
+        vector<shared_ptr<InvocacionAnimal>> invocaciones_vivas;
     
     public:
         conjurador(string n);
         string Get_grupo() const override;
         void invocar_animal();
-        int ataque_con_invocacion();
+        void ataque_con_invocacion(shared_ptr<personaje> enemigo);
+        void recibir_ataque(int daño, TIPO_DAÑO tipo, bool ignorar_armadura) override;
         void paralisis(shared_ptr<personaje> enemigo);
-        int llamado_de_la_naturaleza();
-        int invocacion_maxima();
+        void efecto_aleatorio(shared_ptr<personaje> enemigo);
+        bool invocacion_maxima(shared_ptr<personaje> enemigo);
 
 
 };

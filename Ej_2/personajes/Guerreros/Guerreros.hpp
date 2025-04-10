@@ -26,6 +26,7 @@ class Guerreros : public personaje {
         bool hemorragia = false;
         bool potenciado = false;
         bool protegido = false;
+        bool inmortal = false;
 
     public:
         Guerreros(int a, int rm, int e, int em, int df, string n);

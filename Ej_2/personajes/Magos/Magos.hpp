@@ -25,6 +25,7 @@ class Magos : public personaje {
         bool hemorragia = false;
         bool potenciado = false;
         bool protegido = false;
+        bool inmortal = false;
 
     public:
         Magos(int a, int rm, int m, int mm, int dm, string n);

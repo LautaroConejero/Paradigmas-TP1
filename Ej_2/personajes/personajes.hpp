@@ -19,7 +19,8 @@ enum EFFECTO{
     QUEMADURA,
     HEMORRAGIA,
     POTENCIAR_ALIADO,
-    PROTECCION
+    PROTECCION,
+    INMORTALIDAD
 };
 
 struct EfectoActivo {
