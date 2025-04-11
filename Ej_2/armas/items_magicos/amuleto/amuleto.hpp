@@ -5,7 +5,10 @@
 
 class amuleto : public Item_magicos {
     public:
-        amuleto(int d, int dm, float c);
+        amuleto();
+        int pulso_arcano();
+        int estallido_canalizado();
+        pair<int, TIPO_DAÑO> Atacar() override;
 };
 
 #endif

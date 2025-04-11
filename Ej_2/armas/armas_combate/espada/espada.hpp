@@ -5,7 +5,7 @@
 class espada : public ArmaCombate {
     bool espada_cortada = false;
     public:
-        espada(int df, int d, float c);
+        espada();
         int puntazo_al_pecho();
         int doble_corte();
         void cortar_espada();

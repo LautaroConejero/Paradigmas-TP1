@@ -9,7 +9,6 @@ enum ENCANTAMIENTO{
     TIERRA,
     AIRE,
     ELECTRICIDAD,
-    HIELO
 };
 
 class Item_magicos : public arma {
@@ -20,6 +19,8 @@ class Item_magicos : public arma {
         int daño_magico;
         float chance_critico;
         ENCANTAMIENTO encantamiento;
+        EFFECTO efecto_arma = NINGUNO;
+        bool ignorar_armadura = false;
     
     public:
         Item_magicos(string n, int d, int dm, float c);
@@ -29,6 +30,9 @@ class Item_magicos : public arma {
         int Get_daño_magico() const override;
         float Get_chance_critico() const;
         string Get_encantamiento() const;
+        pair<int, TIPO_DAÑO> Atacar() override {
+            return make_pair(daño_magico, MAGICO);
+        }
 };
 
 #endif

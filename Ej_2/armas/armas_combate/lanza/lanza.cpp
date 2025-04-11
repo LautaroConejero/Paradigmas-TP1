@@ -1,7 +1,7 @@
 #include "lanza.hpp"
 
-lanza::lanza( int df, int d, float c) :
-ArmaCombate("Lanza", df, d, c) {
+lanza::lanza() :
+ArmaCombate("Lanza", 9, 85, 10) {
 }
 
 void lanza::cortar_lanza_mitad() {

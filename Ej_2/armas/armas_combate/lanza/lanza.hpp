@@ -9,7 +9,7 @@ class lanza : public ArmaCombate {
         int tiempo_espera = 0;
         bool lanza_doble = false;      
     public:
-        lanza(int df, int d, float c);
+        lanza();
         void cortar_lanza_mitad();
 
         int arrojar_lanza();

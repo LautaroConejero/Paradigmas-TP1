@@ -5,11 +5,12 @@ int main(){
     cout << "Bienvenido a Trabajo Practico 1." << endl;
     cout << endl;
     while (true){
+        cout << endl;
         cout << "Que desea hacer?" << endl;
-        cout << "2. Probar la funcionalidad de los personajes" << endl;
-        cout << "3. Probar la funcionalidad de la fabrica" << endl;
-        cout << "4. Combate." << endl;
-        cout << "5. Salir." << endl;
+        cout << "1. Probar la funcionalidad de los personajes" << endl;
+        cout << "2. Probar la funcionalidad de la fabrica" << endl;
+        cout << "3. Combate." << endl;
+        cout << "4. Salir." << endl;
         cout << "Elija una opcion: " << endl;
         int opcion;
         cin >> opcion;
@@ -18,15 +19,15 @@ int main(){
             cin >> opcion;
         }
         switch (opcion) {
-            case 2:
+            case 1:
                 break;
-            case 3:
+            case 2:
                 Consola_equipos();
                 break;
-            case 4:
+            case 3:
                 consola_combate();
                 break;
-            case 5:
+            case 4:
                 cout << "Saliendo del programa." << endl;
                 return 0;
         }

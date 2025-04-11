@@ -5,7 +5,9 @@
 
 class hacha_simple : public ArmaCombate {
     public:
-        hacha_simple(int df, int d, float c);
+        hacha_simple();
+        int corte_rapido();
+        int corte_dirigido();
         pair<int, TIPO_DAÑO> Atacar() override;
 };
 

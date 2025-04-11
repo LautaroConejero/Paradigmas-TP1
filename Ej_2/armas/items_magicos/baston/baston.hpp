@@ -5,7 +5,10 @@
 
 class baston : public Item_magicos {
     public:
-        baston(int d, int dm, float c);
+        baston();
+        int rafaga_magica();
+        int canalizacion_elemental();
+        pair<int, TIPO_DAÑO> Atacar() override;
 };
 
 #endif

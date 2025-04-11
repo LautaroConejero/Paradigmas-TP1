@@ -12,7 +12,7 @@ void Consola_equipos(){
     for (int i = 0; i < tamaño; i++){
         int cantidad_armas = rand() % 3;
         cout << "El personaje " << i + 1 << " tiene " << cantidad_armas << " armas." << endl;
-        shared_ptr<personaje> p = PersonajeFactory::Equipar_personaje(1, 0);
+        shared_ptr<personaje> p = PersonajeFactory::Equipar_personaje(1, cantidad_armas);
         equipo.agregar_personaje(p);
         cout << "Personaje " << i + 1 << " creado." << endl;
         cout << endl;
@@ -28,8 +28,7 @@ void Consola_equipos(){
 
     for (int i = 0; i < tamaño_2; i++){
         int cantidad_armas = rand() % 3;
-        cout << "El personaje " << i + 1 << " tiene " << cantidad_armas << " armas." << endl;
-        shared_ptr<personaje> p = PersonajeFactory::Equipar_personaje(2, 0);
+        shared_ptr<personaje> p = PersonajeFactory::Equipar_personaje(2, cantidad_armas);
         equipo_2.agregar_personaje(p);
         cout << "Personaje " << i + 1 << " creado." << endl;
         cout << endl;

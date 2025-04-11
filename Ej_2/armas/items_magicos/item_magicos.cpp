@@ -9,12 +9,11 @@ nombre(n), durabilidad(d), daño_fisico(0), daño_magico(dm), chance_critico(c){
         case 2: this->encantamiento = TIERRA; break;
         case 3: this->encantamiento = AIRE; break;
         case 4: this->encantamiento = ELECTRICIDAD; break;
-        case 5: this->encantamiento = HIELO; break;
     }
 }
 
 string Item_magicos::Get_nombre() const {
-    return this->nombre + "de " + Get_encantamiento();
+    return this->nombre + " de " + Get_encantamiento();
 }
 
 int Item_magicos::Get_durabilidad() const {
@@ -39,7 +38,6 @@ string Item_magicos::Get_encantamiento() const {
         case TIERRA: return "Tierra";
         case AIRE: return "Aire";
         case ELECTRICIDAD: return "Electricidad";
-        case HIELO: return "Hielo";
         default: return "Desconocido";
     }
 }

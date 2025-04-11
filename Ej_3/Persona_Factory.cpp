@@ -126,7 +126,7 @@ shared_ptr<arma> PersonajeFactory::Crear_arma(int des){
             cout << "3. Lanza" << endl;
             cout << "4. Garrote" << endl;
             cin >> arma_tipo;
-            while (arma_tipo < 1 || arma_tipo > 5){
+            while (arma_tipo < 0 || arma_tipo > 4){
                 cout << "Opcion invalida. Elija nuevamente: " << endl;
                 cin >> arma_tipo;
             }
@@ -138,7 +138,7 @@ shared_ptr<arma> PersonajeFactory::Crear_arma(int des){
             cout << "2. Pocion" << endl;
             cout << "3. Amuleto" << endl;
             cin >> arma_tipo;
-            while (arma_tipo < 1 || arma_tipo > 4){
+            while (arma_tipo < 0 || arma_tipo > 3){
                 cout << "Opcion invalida. Elija nuevamente: " << endl;
                 cin >> arma_tipo;
             }

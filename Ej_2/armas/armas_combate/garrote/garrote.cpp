@@ -1,7 +1,7 @@
 #include "garrote.hpp"
 
-garrote::garrote(int df, int d, float c) :
-ArmaCombate("Garrote", df, d, c) {
+garrote::garrote() :
+ArmaCombate("Garrote", 11, 80, 5) {
 }
 
 void garrote::astillar_garrote() {

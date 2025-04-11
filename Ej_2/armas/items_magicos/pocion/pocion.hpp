@@ -4,8 +4,16 @@
 #include "../item_magicos.hpp"
 
 class pocion : public Item_magicos {
+        private:
+            bool explosion = false;
+            int probabilidad_explotar = 3; // 3% de probabilidad de explotar
+
     public:
-        pocion(int d, int dm, float c);
+        pocion();
+        int explosion_alquimica();
+        void exploto();
+        int salpicadura_corrosiva();
+        pair<int, TIPO_DAÑO> Atacar() override;
 };
 
 #endif

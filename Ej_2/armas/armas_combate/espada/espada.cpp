@@ -1,7 +1,7 @@
 #include "espada.hpp"
 
-espada::espada(int df, int d, float c) : 
-ArmaCombate("Espada", df, d, c) {
+espada::espada() : 
+ArmaCombate("Espada", 12, 100, 20) {
 }
 
 void espada::cortar_espada() {

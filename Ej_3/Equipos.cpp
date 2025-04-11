@@ -29,6 +29,7 @@ void Equipo::eliminar_muettos() {
 
 void Equipo::mostrar_personajes() {
     for (int i = 0; i < cantidad_personajes; i++){
+        cout << endl;
         cout << "Personaje: " << i + 1 << ": " << personajes[i]->Get_nombre() <<" (" << personajes[i]->Get_grupo() << ")"<<endl;
         cout << "Sus armas son: " << endl;
         if (personajes[i]->Get_armas().first != nullptr){
