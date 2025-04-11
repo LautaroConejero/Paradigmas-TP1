@@ -8,7 +8,8 @@ class garrote : public ArmaCombate {
         bool astillado = false;        
     public:
         garrote();
-
+        string Get_tipo() const override;
+        
         void astillar_garrote();
         int golpe_cargado();
         int aplastamiento();

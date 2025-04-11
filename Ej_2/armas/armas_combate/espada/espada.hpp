@@ -6,6 +6,7 @@ class espada : public ArmaCombate {
     bool espada_cortada = false;
     public:
         espada();
+        string Get_tipo() const override;
         int puntazo_al_pecho();
         int doble_corte();
         void cortar_espada();

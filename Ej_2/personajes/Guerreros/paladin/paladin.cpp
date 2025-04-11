@@ -13,6 +13,10 @@ int paladin::Get_vida() const {
     return this->vida + this->vida_fe;
 }
 
+string paladin::Get_tipo_guerrero() const {
+    return "Guerrero sagrado";
+}
+
 
 void paladin::usar_escudo() {
     if (estamina < 40){

@@ -14,6 +14,7 @@ class paladin : public Guerreros {
     public:
         paladin(string n);
         string Get_grupo() const override;
+        string Get_tipo_guerrero() const override;
         int Get_vida() const override;
         void usar_escudo();
         void aumentar_la_fe(int daño_infligido); 

@@ -24,15 +24,13 @@ class Item_magicos : public arma {
     
     public:
         Item_magicos(string n, int d, int dm, float c);
+        virtual string Get_calidad() const = 0;
         string Get_nombre() const override;
         int Get_durabilidad() const override;
         int Get_daño_fisico() const override;
         int Get_daño_magico() const override;
         float Get_chance_critico() const;
         string Get_encantamiento() const;
-        pair<int, TIPO_DAÑO> Atacar() override {
-            return make_pair(daño_magico, MAGICO);
-        }
 };
 
 #endif

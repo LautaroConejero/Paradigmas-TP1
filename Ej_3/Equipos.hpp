@@ -13,7 +13,7 @@ class Equipo {
     public:
         Equipo(string nombre_equipo, int cantidad_personajes);
         void agregar_personaje(shared_ptr<personaje> p);
-        void eliminar_muettos();
+        void eliminar_muertos();
         void mostrar_personajes();
         int verificar_vivos();
         vector<shared_ptr<personaje>> devolver_personajes();

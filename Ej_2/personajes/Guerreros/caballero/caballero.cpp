@@ -7,6 +7,10 @@ string caballero::Get_grupo() const {
     return "Caballero";
 }
 
+string caballero::Get_tipo_guerrero() const {
+    return "Guerrero noble";
+}
+
 void caballero::juramento_de_proteccion(shared_ptr<personaje> aliado) {
     if (estamina < 20) {
         cout << "No hay suficiente estamina." << endl;

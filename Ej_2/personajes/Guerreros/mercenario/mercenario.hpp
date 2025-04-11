@@ -18,6 +18,7 @@ class mercenario : public Guerreros {
     public:
         mercenario(string n);
         string Get_grupo() const override;
+        string Get_tipo_guerrero() const override;
         void robar_arma(shared_ptr<personaje> enemigo);
         void robar_oro(shared_ptr<personaje> enemigo);
         void aplicar_oro();
@@ -27,7 +28,7 @@ class mercenario : public Guerreros {
         void procesar_marcas();
         void aplicar_marcas(Marca marca);
         void contratar_sicario(shared_ptr<personaje> enemigo);
-        void asesinar_aliado(Equipo aliados);
+        void asesinar_aliado(shared_ptr<Equipo> aliados);
         void cañonazo(shared_ptr<personaje> enemigo);
     
 };

@@ -8,6 +8,10 @@ string barbaro::Get_grupo() const {
     return "Barbaro";
 }
 
+string barbaro::Get_tipo_guerrero() const {
+    return "Guerrero salvaje";
+}
+
 void barbaro::aumentar_furia(int daño_infligido) {
     this->furia += daño_infligido*0.3;
     cout << "El barbaro aumento su furia" << endl;
@@ -66,14 +70,14 @@ void barbaro::rompe_huesos(shared_ptr<personaje> enemigo){
     return;
 }
 
-void barbaro::grito_de_batalla(Equipo enemigos) {
+void barbaro::grito_de_batalla(shared_ptr<Equipo> enemigos) {
     if (estamina < 20 || furia < 20){
         cout << "No hay suficiente estamina." << endl;
         return;
     }
     cout << "El barbaro grita de batalla." << endl;
     cout << "Cada enemigo tiene la posibilidad de asustarse." << endl;
-    vector<shared_ptr<personaje>> enemigos_vivos = enemigos.devolver_vivos();
+    vector<shared_ptr<personaje>> enemigos_vivos = enemigos->devolver_vivos();
     for (size_t i = 0; i < enemigos_vivos.size(); i++){
         int prob = rand() % 100;
         if (prob < 80) {

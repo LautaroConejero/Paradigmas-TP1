@@ -7,6 +7,9 @@ invocaciones_maximas(2){}
 string conjurador::Get_grupo() const {
     return "Conjurador";
 }
+string conjurador::get_tipo_mago() const{
+    return "Mago neutral";
+}
 
 void conjurador::invocar_animal() {
     if (mana < 18) {

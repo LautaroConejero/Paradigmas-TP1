@@ -9,10 +9,14 @@ void pocion::exploto() {
     durabilidad = 0; // La poción se rompe al explotar
 }
 
+string pocion::Get_calidad() const {
+    return "Comun";
+}
+
 int pocion::explosion_alquimica() {
     durabilidad--;
 
-    int daño_magico = 0;
+    int daño;
     int explosion = rand() % 100;
     if (explosion < probabilidad_explotar) {
         exploto();
@@ -22,7 +26,7 @@ int pocion::explosion_alquimica() {
         
     }
 
-    int daño = daño_magico + (rand() % 5); // daño entre 10–14
+    daño = daño_magico + (rand() % 5); // daño entre 10–14
 
     switch (encantamiento) {
         case FUEGO: efecto_arma = QUEMADURA; break;
@@ -40,7 +44,14 @@ int pocion::salpicadura_corrosiva() {
     durabilidad -= 2;
     int daño = daño_magico + (rand() % 3); // daño 10–12
 
-    efecto_arma = encantamiento;
+    switch (encantamiento) {
+        case FUEGO: efecto_arma = QUEMADURA; break;
+        case AGUA: efecto_arma = CONFUSION; break;
+        case TIERRA: efecto_arma = MIEDO; break;
+        case AIRE: efecto_arma = PARALIZAR; break;
+        case ELECTRICIDAD: efecto_arma = HEMORRAGIA; break;
+        default: efecto_arma = NINGUNO; break;
+    }
 
     return daño;
 }

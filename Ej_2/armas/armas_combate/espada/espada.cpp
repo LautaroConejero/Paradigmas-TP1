@@ -4,6 +4,10 @@ espada::espada() :
 ArmaCombate("Espada", 12, 100, 20) {
 }
 
+string espada::Get_tipo() const {
+    return "Arma clasica";
+}
+
 void espada::cortar_espada() {
     espada_cortada = true;
     int proba_hemorragia = rand() % 100;

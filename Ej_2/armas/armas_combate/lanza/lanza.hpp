@@ -10,6 +10,7 @@ class lanza : public ArmaCombate {
         bool lanza_doble = false;      
     public:
         lanza();
+        string Get_tipo() const override;
         void cortar_lanza_mitad();
 
         int arrojar_lanza();

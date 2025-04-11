@@ -4,6 +4,10 @@ hacha_simple::hacha_simple() :
 ArmaCombate("Hacha simple", 10, 75, 10) {
 }
 
+string hacha_simple::Get_tipo() const {
+    return "Arma perforante";
+}
+
 int hacha_simple::corte_rapido() {
     durabilidad--;
     int daño = daño_fisico;

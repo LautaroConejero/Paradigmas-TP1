@@ -14,8 +14,9 @@ class brujo : public Magos {
     public:
         brujo(string n);
         string Get_grupo() const override;
+        string get_tipo_mago() const override;
         void maldecir_enemigo(shared_ptr<personaje> enemigo);
-        void control_mental(Equipo enemigos, shared_ptr<personaje> enemigo);
+        void control_mental(shared_ptr<Equipo> enemigos, shared_ptr<personaje> enemigo);
         void estado_de_frenesi();
         void recibir_ataque(int daño, TIPO_DAÑO tipo, bool ignorar_armadura) override;
         void ataque_rapido(shared_ptr<personaje> enemigo) override;

@@ -31,10 +31,10 @@ class Magos : public personaje {
         Magos(int a, int rm, int m, int mm, int dm, string n);
         bool Esta_vivo() const override;
         string Get_nombre() const override;
-
+        virtual string get_tipo_mago() const = 0;
+        
         int Get_dano_fisico() const override;
         int Get_dano_magico() const override;
-
         int Get_vida() const override;
         int Get_vida_maxima() const override;
         void morir(int vida_restante) override;

@@ -8,6 +8,7 @@ class hacha_doble : public ArmaCombate {
         int doble_golpe;
     public:
         hacha_doble();
+        string Get_tipo() const override;
         int swing();
         int doble_corte();
         pair<int, TIPO_DAÑO> Atacar() override;

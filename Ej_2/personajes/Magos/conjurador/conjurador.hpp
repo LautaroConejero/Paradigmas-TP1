@@ -29,6 +29,7 @@ class conjurador : public Magos {
     public:
         conjurador(string n);
         string Get_grupo() const override;
+        string get_tipo_mago() const override;
         void invocar_animal();
         void ataque_con_invocacion(shared_ptr<personaje> enemigo);
         void recibir_ataque(int daño, TIPO_DAÑO tipo, bool ignorar_armadura) override;

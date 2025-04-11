@@ -10,6 +10,7 @@ class pocion : public Item_magicos {
 
     public:
         pocion();
+        string Get_calidad() const override;
         int explosion_alquimica();
         void exploto();
         int salpicadura_corrosiva();

@@ -10,6 +10,10 @@ string gladiador::Get_grupo() const {
     return "Gladiador";
 }
 
+string gladiador::Get_tipo_guerrero() const {
+    return "Guerrero de la arena";
+}
+
 void gladiador::aumentar_adrenalina(int daño_infligido) {
     this->adrenalina += daño_infligido/4;
     cout << "El gladiador aumento su adrenalina" << endl;

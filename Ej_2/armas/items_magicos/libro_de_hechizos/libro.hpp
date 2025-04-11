@@ -9,6 +9,7 @@ class libro_de_hechizos : public Item_magicos {
         EFFECTO efecto_secundario = NINGUNO;
     public:
         libro_de_hechizos();
+        string Get_calidad() const override;
         pair<int, EFFECTO> lanzar_hechizo();
         pair<int, TIPO_DAÑO> Atacar() override;
 };

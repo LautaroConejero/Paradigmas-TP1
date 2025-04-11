@@ -4,6 +4,10 @@ lanza::lanza() :
 ArmaCombate("Lanza", 9, 85, 10) {
 }
 
+string lanza::Get_tipo() const {
+    return "Arma de guerra";
+}
+
 void lanza::cortar_lanza_mitad() {
     if (durabilidad > 70) {
         lanza_doble = true;

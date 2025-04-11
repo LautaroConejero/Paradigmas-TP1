@@ -4,6 +4,10 @@ baston::baston() :
     Item_magicos("Baston", 100, 11, 5) {
 }
 
+string baston::Get_calidad() const {
+    return "Mistico";
+}
+
 int baston::rafaga_magica() {
     durabilidad--;
     int daño = daño_magico;

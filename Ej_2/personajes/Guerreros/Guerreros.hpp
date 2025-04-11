@@ -7,7 +7,7 @@
 
 class Guerreros : public personaje {
     protected:
-        bool vivo ;
+        bool vivo;
         int vida;
         int vida_maxima;
         int armadura;
@@ -32,6 +32,7 @@ class Guerreros : public personaje {
         Guerreros(int a, int rm, int e, int em, int df, string n);
         bool Esta_vivo() const override;
         string Get_nombre() const override;
+        virtual string Get_tipo_guerrero() const = 0;
 
         int Get_dano_fisico() const override;
         int Get_dano_magico() const override;

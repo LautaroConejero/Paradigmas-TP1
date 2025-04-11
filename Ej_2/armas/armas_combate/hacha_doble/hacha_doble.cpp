@@ -5,6 +5,10 @@ ArmaCombate("Hacha doble", 13, 65, 15),
 doble_golpe(25) {
 }
 
+string hacha_doble::Get_tipo() const {
+    return "Arma pesada";
+}
+
 int hacha_doble::swing() {
     durabilidad -= 2;
     int daño = daño_fisico + 5;

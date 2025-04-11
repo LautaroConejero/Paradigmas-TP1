@@ -13,7 +13,7 @@ void Equipo::agregar_personaje(shared_ptr<personaje> p) {
     }
 }
 
-void Equipo::eliminar_muettos() {
+void Equipo::eliminar_muertos() {
     if (!personajes_vivos.empty()) {
         for (size_t i = 0; i < personajes_vivos.size(); i++){
             if (personajes_vivos[i]->Esta_vivo() == false){

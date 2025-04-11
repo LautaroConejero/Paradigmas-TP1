@@ -4,6 +4,10 @@ libro_de_hechizos::libro_de_hechizos() :
     Item_magicos("Libro de hechizos", 70, 14, 15),
     probabilidad_ignorar_armadura(25) {}
 
+string libro_de_hechizos::Get_calidad() const {
+    return "Legendario";
+}
+
 pair<int, EFFECTO> libro_de_hechizos::lanzar_hechizo() {
     int daño = daño_magico;
     EFFECTO efecto = NINGUNO;

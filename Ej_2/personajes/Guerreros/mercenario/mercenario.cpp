@@ -9,6 +9,10 @@ string mercenario::Get_grupo() const {
     return "Mercenario";
 }
 
+string mercenario::Get_tipo_guerrero() const {
+    return "Guerrero inmoral";
+}
+
 void mercenario::robar_arma(shared_ptr<personaje> enemigo) {
     if (estamina < 40){
         cout << "No hay suficiente estamina." << endl;
@@ -153,8 +157,8 @@ void mercenario::contratar_sicario(shared_ptr<personaje> enemigo) {
     return;
 }
 
-void mercenario::asesinar_aliado(Equipo aliados) {
-    if (aliados.verificar_vivos() == 1) {
+void mercenario::asesinar_aliado(shared_ptr<Equipo> aliados) {
+    if (aliados->verificar_vivos() == 1) {
         cout << "La jugada no salio como se esperaba..." << endl;
         cout << "No hay aliados vivos." << endl;
         cout << "El mercenario decide poner fin a su vida." << endl;
@@ -163,7 +167,7 @@ void mercenario::asesinar_aliado(Equipo aliados) {
     }
     cout << "Elija al aliado que estas dispuesto a asesinar." << endl;
     int opcion;
-    vector<shared_ptr<personaje>> aliados_vivos = aliados.devolver_vivos();
+    vector<shared_ptr<personaje>> aliados_vivos = aliados->devolver_vivos();
     for (size_t i = 0; i < aliados_vivos.size(); i++){
         cout << i + 1 << ". " << aliados_vivos[i]->Get_nombre() << endl;
     }

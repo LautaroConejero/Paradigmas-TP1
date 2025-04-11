@@ -8,6 +8,9 @@ brujo::brujo(string n):
 string brujo::Get_grupo() const {
     return "Brujo";
 }
+string brujo::get_tipo_mago() const{
+    return "Mago oscuro";
+}
 
 void brujo::maldecir_enemigo(shared_ptr<personaje> enemigo) {
     if (mana < 10) {
@@ -69,7 +72,7 @@ void brujo::maldecir_enemigo(shared_ptr<personaje> enemigo) {
     return;
 }   
 
-void brujo::control_mental(Equipo enemigos, shared_ptr<personaje> enemigo){
+void brujo::control_mental(shared_ptr<Equipo> enemigos, shared_ptr<personaje> enemigo){
     if (mana < 25) {
         cout << "No tienes suficiente maná para usar control mental." << endl;
         return;
@@ -78,8 +81,8 @@ void brujo::control_mental(Equipo enemigos, shared_ptr<personaje> enemigo){
     cout << "Gracias a su control mental, el brujo ha tomado el control de " << enemigo->Get_nombre() << "." << endl;
     cout << "Ahora el enemigo atacara a su propio equipo." << endl;
     
-    int enemigo_index = rand() % enemigos.verificar_vivos();
-    shared_ptr<personaje> enemigo_atacado = enemigos.devolver_vivos()[enemigo_index];
+    int enemigo_index = rand() % enemigos->verificar_vivos();
+    shared_ptr<personaje> enemigo_atacado = enemigos->devolver_vivos()[enemigo_index];
     cout << "El brujo ha controlado a " << enemigo->Get_nombre() << " y lo ha hecho atacar a " << enemigo_atacado->Get_nombre() << "." << endl;
     
     int daño = 10 + (enemigo->Get_dano_fisico() + enemigo->Get_dano_magico()) / 2;

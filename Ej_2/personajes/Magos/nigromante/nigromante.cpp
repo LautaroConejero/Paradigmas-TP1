@@ -8,8 +8,11 @@ resurrecciones_restantes(2), activacion_reino(1){}
 string nigromante::Get_grupo() const {
     return "Nigromante";
 }
+string nigromante::get_tipo_mago() const {
+    return "Mago muerto";
+}
 
-bool nigromante::revivir_compañero(shared_ptr<personaje> aliado, Equipo aliados) {
+bool nigromante::revivir_compañero(shared_ptr<personaje> aliado, shared_ptr<Equipo> aliados) {
     if (aliado->Esta_vivo()) {
         cout << "El nigromante no puede revivir a un aliado vivo." << endl;
         return false;
@@ -23,7 +26,7 @@ bool nigromante::revivir_compañero(shared_ptr<personaje> aliado, Equipo aliados
         cout << "Vuelve a la vida con 30 de vida." << endl;
 
         aliado->morir(30);
-        aliados.agregar_personaje(aliado);
+        aliados->agregar_personaje(aliado);
         resurrecciones_restantes--;
         return true;
     }

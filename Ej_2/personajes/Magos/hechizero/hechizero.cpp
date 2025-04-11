@@ -9,6 +9,10 @@ string hechizero::Get_grupo() const {
     return "Hechizero";
 }
 
+string hechizero::get_tipo_mago() const{
+    return "Mago blanco";
+}
+
 void hechizero::escudo_magico(){
     if (this->mana >= 10){
         this->mana -= 10;

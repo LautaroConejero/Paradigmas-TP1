@@ -26,11 +26,12 @@ class ArmaCombate : public arma {
     public:
         ArmaCombate(string n, int df, int d, float c);
         string Get_nombre() const override;
+        virtual string Get_tipo() const = 0;
         int Get_durabilidad() const override;
         int Get_daño_fisico() const override;
         int Get_daño_magico() const override;
         float Get_chance_critico() const;
-        string Get_material() const;  
+        string Get_material() const;   
 };
 
 #endif

@@ -3,6 +3,10 @@
 amuleto::amuleto() :
     Item_magicos("Amuleto", 60, 10, 5) {}
 
+string amuleto::Get_calidad() const {
+    return "Unico";
+}
+
 int amuleto::pulso_arcano() {
     durabilidad--;
 

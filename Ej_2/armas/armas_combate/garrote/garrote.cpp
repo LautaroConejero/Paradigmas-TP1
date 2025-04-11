@@ -4,6 +4,10 @@ garrote::garrote() :
 ArmaCombate("Garrote", 11, 80, 5) {
 }
 
+string garrote::Get_tipo() const {
+    return "Arma contundente";
+}
+
 void garrote::astillar_garrote() {
     if (durabilidad < 20) {
         astillado = true;
