@@ -1,8 +1,8 @@
 #include "nigromante.hpp"
-#include "../../../../Ej_3/Equipos.hpp"
+#include "../../../Equipo/Equipos.hpp"
 
-nigromante::nigromante(string n):
-Magos(10, 25, 80, 80, 30, n),
+nigromante::nigromante():
+Magos(10, 25, 80, 80, 30, "Mortalis"),
 resurrecciones_restantes(2), activacion_reino(1){}
 
 string nigromante::Get_grupo() const {

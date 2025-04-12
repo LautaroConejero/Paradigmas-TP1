@@ -7,7 +7,7 @@ class caballero : public Guerreros {
     private:
 
     public:
-        caballero(string n);
+        caballero();
         string Get_grupo() const override;
         string Get_tipo_guerrero() const override;
         void juramento_de_proteccion(shared_ptr<personaje> aliado);

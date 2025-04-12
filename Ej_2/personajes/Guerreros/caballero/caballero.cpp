@@ -1,7 +1,7 @@
 #include "caballero.hpp"
 
-caballero::caballero(string n):
-Guerreros(55, 35, 28, 90, 90, n) {}
+caballero::caballero():
+Guerreros(55, 35, 28, 90, 90, "Sir Edric") {}
 
 string caballero::Get_grupo() const {
     return "Caballero";

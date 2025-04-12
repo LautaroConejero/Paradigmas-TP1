@@ -16,7 +16,7 @@ class mercenario : public Guerreros {
         shared_ptr<arma> arma_robada = nullptr;
         vector<Marca> marcas_activas;
     public:
-        mercenario(string n);
+        mercenario();
         string Get_grupo() const override;
         string Get_tipo_guerrero() const override;
         void robar_arma(shared_ptr<personaje> enemigo);

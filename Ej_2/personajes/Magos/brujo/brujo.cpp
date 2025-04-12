@@ -1,7 +1,7 @@
 #include "brujo.hpp"
-#include "../../../../Ej_3/Equipos.hpp"
-brujo::brujo(string n):
-    Magos(10, 20, 90, 90, 35, n),
+#include "../../../Equipo/Equipos.hpp"
+brujo::brujo():
+    Magos(10, 20, 90, 90, 35, "Zorvak"),
     estado_frenesi(false), demonio_invocado(false),
     pacto_usado(false), rondas_pacto(0) {}
 

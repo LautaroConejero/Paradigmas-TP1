@@ -22,7 +22,7 @@ class gladiador : public Guerreros {
         
     
     public:
-        gladiador(string n);
+        gladiador();
         string Get_grupo() const override;
         string Get_tipo_guerrero() const override;
         void aumentar_adrenalina(int daño_infligido);

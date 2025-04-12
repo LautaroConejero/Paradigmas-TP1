@@ -27,7 +27,7 @@ class conjurador : public Magos {
         vector<shared_ptr<InvocacionAnimal>> invocaciones_vivas;
     
     public:
-        conjurador(string n);
+        conjurador();
         string Get_grupo() const override;
         string get_tipo_mago() const override;
         void invocar_animal();

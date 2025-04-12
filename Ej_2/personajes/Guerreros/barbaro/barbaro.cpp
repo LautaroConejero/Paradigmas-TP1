@@ -1,8 +1,8 @@
 #include "barbaro.hpp"
-#include "../../../../Ej_3/Equipos.hpp"
+#include "../../../Equipo/Equipos.hpp"
 
-barbaro::barbaro(string n):
-Guerreros(10, 5, 40, 100, 100, n), furia(0) {}
+barbaro::barbaro():
+Guerreros(10, 5, 40, 100, 100, "Grunak"), furia(0) {}
 
 string barbaro::Get_grupo() const {
     return "Barbaro";

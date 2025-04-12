@@ -12,7 +12,7 @@ class brujo : public Magos {
         bool pacto_usado; // Si ya hizo un pacto demoníaco
         int rondas_pacto; // Cuantas rondas quedan para que el pacto termine
     public:
-        brujo(string n);
+        brujo();
         string Get_grupo() const override;
         string get_tipo_mago() const override;
         void maldecir_enemigo(shared_ptr<personaje> enemigo);

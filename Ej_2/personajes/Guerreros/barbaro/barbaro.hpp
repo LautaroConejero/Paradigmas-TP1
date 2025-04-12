@@ -9,7 +9,7 @@ class barbaro : public Guerreros {
         int bonus_daño_furia = 0;
     
     public:
-        barbaro(string n);
+        barbaro();
         string Get_grupo() const override;
         string Get_tipo_guerrero() const override;
         void aumentar_furia(int daño_infligido); // aumenta la furia al recibir daño o infligir daño

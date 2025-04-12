@@ -1,7 +1,7 @@
 #include "hechizero.hpp"
 
-hechizero::hechizero(string n): 
-Magos(5, 25, 100, 100, 40, n),
+hechizero::hechizero(): 
+Magos(5, 25, 100, 100, 40, "Almeth"),
 escudos_magicos(0), escudos_fisicos(0), 
 cant_clones(0), clonado(false) {}
 

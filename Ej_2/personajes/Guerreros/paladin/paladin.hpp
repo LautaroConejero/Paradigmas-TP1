@@ -12,7 +12,7 @@ class paladin : public Guerreros {
         int estamina_fe; 
         int daño_fe;
     public:
-        paladin(string n);
+        paladin();
         string Get_grupo() const override;
         string Get_tipo_guerrero() const override;
         int Get_vida() const override;

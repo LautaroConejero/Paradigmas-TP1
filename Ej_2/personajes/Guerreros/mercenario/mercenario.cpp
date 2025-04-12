@@ -1,8 +1,8 @@
 #include "mercenario.hpp"
-#include "../../../../Ej_3/Equipos.hpp"
+#include "../../../Equipo/Equipos.hpp"
 
-mercenario::mercenario(string n): 
-Guerreros(15,10,30,80,80,n) {
+mercenario::mercenario(): 
+Guerreros(15,10,30,80,80,"Kael") {
 }
 
 string mercenario::Get_grupo() const {

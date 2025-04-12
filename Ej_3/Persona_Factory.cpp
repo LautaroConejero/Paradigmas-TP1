@@ -55,16 +55,16 @@ shared_ptr<personaje> PersonajeFactory::Crear_personajes(int des){
             personaje_tipo = static_cast<MAGOS>(personaje_tipo);
             switch(personaje_tipo){
                 case HECHICERO:
-                    return make_shared<hechizero>("Lauti");
+                    return make_shared<hechizero>();
                     break;
                 case CONJURADOR:
-                    return make_shared<conjurador>("Lauti");
+                    return make_shared<conjurador>();
                     break;
                 case BRUJO:
-                    return make_shared<brujo>("Lauti");
+                    return make_shared<brujo>();
                     break;
                 case NIGROMANTE:
-                    return make_shared<nigromante>("Lauti");
+                    return make_shared<nigromante>();
                     break;
             }
             break;
@@ -72,19 +72,19 @@ shared_ptr<personaje> PersonajeFactory::Crear_personajes(int des){
             personaje_tipo = static_cast<GUERREROS>(personaje_tipo);
             switch(personaje_tipo){
                 case BARBARO:
-                    return make_shared<barbaro>("Lauti");
+                    return make_shared<barbaro>();
                     break;
                 case PALADIN:
-                    return make_shared<paladin>("Lauti");
+                    return make_shared<paladin>();
                     break;
                 case CABALLERO:
-                    return make_shared<caballero>("Lauti");
+                    return make_shared<caballero>();
                     break;
                 case MERCENARIO:
-                    return make_shared<mercenario>("Lauti");
+                    return make_shared<mercenario>();
                     break;
                 case GLADIADOR:
-                    return make_shared<gladiador>("Lauti");
+                    return make_shared<gladiador>();
                     break;
             }
             break;

@@ -1,3 +1,4 @@
+#include "Ej_2/Consola_2.hpp"
 #include "Ej_3/Creacion_terminal.hpp"
 #include "Ej_4/combate.hpp"
 
@@ -20,6 +21,7 @@ int main(){
         }
         switch (opcion) {
             case 1:
+                consola_2();
                 break;
             case 2:
                 Consola_equipos();

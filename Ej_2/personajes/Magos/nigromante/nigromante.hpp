@@ -17,7 +17,7 @@ class nigromante : public Magos {
         int activacion_reino;
 
     public:
-        nigromante(string n);
+        nigromante();
         string Get_grupo() const override;
         string get_tipo_mago() const override;
         bool revivir_compañero(shared_ptr<personaje> aliado, shared_ptr<Equipo> aliados);

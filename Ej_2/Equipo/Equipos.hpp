@@ -1,7 +1,8 @@
 #ifndef EQUIPOS_HPP
 #define EQUIPOS_HPP
 
-#include "Persona_Factory.hpp"
+#include "../personajes/personajes.hpp"
+#include "../armas/armas.hpp"
 
 class Equipo {
     private:

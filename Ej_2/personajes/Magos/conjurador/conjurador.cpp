@@ -1,7 +1,7 @@
 #include "conjurador.hpp"
 
-conjurador::conjurador(string n):
-Magos(10, 15, 85, 85, 25, n),
+conjurador::conjurador():
+Magos(10, 15, 85, 85, 25, "Elion"),
 invocaciones_maximas(2){}
 
 string conjurador::Get_grupo() const {

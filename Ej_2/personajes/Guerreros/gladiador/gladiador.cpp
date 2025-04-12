@@ -1,7 +1,7 @@
 #include "gladiador.hpp"
 
-gladiador::gladiador(string n):
-Guerreros(20, 10, 35, 90, 90, n),
+gladiador::gladiador():
+Guerreros(20, 10, 35, 90, 90, "Varek"),
 honor(0), adrenalina(0), capacidad_esquivar(20),esquivar_activado(false), capacidad_adrenalina(0), 
 armadura_adrenalina(0), espiritu_activado(false), espiritu_usado(false), cantidad_efectos_no_recibidos(0),
 daño_honor(0) {}

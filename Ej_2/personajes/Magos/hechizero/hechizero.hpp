@@ -14,7 +14,7 @@ class hechizero : public Magos {
 
 
     public:
-        hechizero(string n);
+        hechizero();
         string Get_grupo() const override;
         string get_tipo_mago() const override;
         void confusion(shared_ptr<personaje> enemigo);

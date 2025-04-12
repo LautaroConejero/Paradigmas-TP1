@@ -1,7 +1,7 @@
 #include "paladin.hpp"
 
-paladin::paladin(string n): 
-Guerreros(30,25,25,70,70, n),
+paladin::paladin(): 
+Guerreros(30,25,25,70,70, "Thalorín"),
 escudo (false), fe(0), vida_fe(0), estamina_fe(0), daño_fe(0) {
 }
 
