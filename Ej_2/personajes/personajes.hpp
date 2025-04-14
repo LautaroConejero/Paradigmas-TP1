@@ -36,6 +36,7 @@ class personaje{
         virtual void eliminar_arma(int posicion) = 0;
         virtual void ataque_rapido(shared_ptr<personaje> enemigo) = 0;
         virtual void atacar_con_arma(shared_ptr<personaje> enemigo) = 0;
+        virtual void atacar(shared_ptr<personaje> enemigo) = 0;
 
 };
 

@@ -142,6 +142,7 @@ void nigromante::recibir_ataque(int daño, TIPO_DAÑO tipo, bool ignorar_armadur
         cout << Get_nombre() << " está asustado y recibe daño aumentado." << endl;
     }
 
+    int vida_actual = vida;
     if (ignorar_armadura) {
         vida -= daño;
     } else {
@@ -151,6 +152,7 @@ void nigromante::recibir_ataque(int daño, TIPO_DAÑO tipo, bool ignorar_armadur
             vida -= daño * (1 - resistencia_magica / 100.0);
         }
     }
+    cout << Get_nombre() << " recibe " << vida_actual - vida << " de daño." << endl;
 
     if (vida <= 0) {
         vida = 0;
@@ -160,37 +162,85 @@ void nigromante::recibir_ataque(int daño, TIPO_DAÑO tipo, bool ignorar_armadur
 }
 void nigromante::reino_de_los_muertos(shared_ptr<personaje> enemigo) {
     if (mana < 65){
-        cout << "No hay mana suficiente." << endl;
+        cout << "No hay maná suficiente." << endl;
         return;
     }
     if (activacion_reino == 0) {
         cout << "No quedan reinos de los muertos." << endl;
         return;
     }
-    cout << "El nigromante" << Get_nombre() << " ha absorvido el cuerpo de " << enemigo->Get_nombre() << endl;
-    cout << "Pelearan por dos rondas en el reino de los muertos." << endl;
 
+    mana -= 65;
+    activacion_reino--;
+
+    cout << "El nigromante " << Get_nombre() << " ha absorbido el cuerpo de " << enemigo->Get_nombre() << "." << endl;
+    cout << "Pelearán por dos rondas en el Reino de los Muertos..." << endl << endl;
+
+    // Guardar estado original
+    int vida_max_original = this->vida_maxima;
+    int armadura_original = this->armadura;
+    int resistencia_original = this->resistencia_magica;
+    int daño_magico_original = this->daño_magico;
+
+    // Absorción de estadísticas (20%)
     int vida_absorbida = enemigo->Get_vida_maxima() * 0.2;
-    this->vida += vida_absorbida;
-    this->vida_maxima += vida_absorbida;
-
     int armadura_absorbida = enemigo->Get_armadura() * 0.2;
-    this->armadura += armadura_absorbida;
-
     int resistencia_absorbida = enemigo->Get_resistencia_m() * 0.2;
-    this->resistencia_magica += resistencia_absorbida;
+    int poder_absorbido = 0;
 
     if (daño_fisico == 0){
-        this->daño_magico += enemigo->Get_dano_fisico() * 0.2;
+        poder_absorbido = enemigo->Get_dano_fisico() * 0.2;
     } else {
-        this->daño_magico += enemigo->Get_dano_magico() * 0.2;
+        poder_absorbido = enemigo->Get_dano_magico() * 0.2;
     }
-    cout << "El nigromante absorbe 20 porciento de sus estadisticas." << endl;
-    cout << "Si el nigromante es capaz de ganar, se quedara con las estadisticas." << endl;
-    cout << endl;
 
-    for (int i = 0; i < 2; i++){
-        cout << "Ronda " << i + 1 << endl;
-        
+    this->vida += vida_absorbida;
+    this->vida_maxima += vida_absorbida;
+    this->armadura += armadura_absorbida;
+    this->resistencia_magica += resistencia_absorbida;
+    this->daño_magico += poder_absorbido;
+    this->mana = mana_maximo * 0.5; // Restaura el 50% del maná máximo
+
+    cout << "El nigromante absorbe 20 porceiento de las estadísticas del enemigo." << endl;
+    cout << "Si sobrevive, conservará el poder robado." << endl << endl;
+
+    // Simulación de las dos rondas
+    for (int i = 0; i < 2; i++) {
+        cout << "──── Ronda " << i + 1 << " ────" << endl;
+
+        if (!this->Esta_vivo() || !enemigo->Esta_vivo()) break;
+
+        this->drenaje_vida(enemigo);
+        if (enemigo->Esta_vivo()) {
+            enemigo->atacar(shared_from_this());
+        }
+
+        cout << endl;
     }
+
+    // Si el nigromante muere, pierde todo lo robado
+    if (!this->Esta_vivo()) {
+        cout << "El nigromante ha sido derrotado en el Reino de los Muertos..." << endl;
+    } 
+    else if (!enemigo->Esta_vivo()) {
+        cout << "El nigromante ha derrotado a " << enemigo->Get_nombre() << " en el Reino de los Muertos." << endl;
+        cout << "Conserva el poder robado." << endl;
+        
+
+    } else {
+        cout << "El nigromante pierde todo el poder robado." << endl;
+        this->armadura = armadura_original;
+        this->resistencia_magica = resistencia_original;
+        this->daño_magico = daño_magico_original;
+        this->vida_maxima = vida_max_original;
+        if (this->vida - vida_absorbida < 0){
+            this->vida = 1;
+        } else {
+            this->vida -= vida_absorbida;
+        }
+    }
+
+    cout << endl;
+    cout << "──── Fin del Reino de los Muertos ────" << endl;
+    return;
 }

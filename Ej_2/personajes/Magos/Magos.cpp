@@ -157,6 +157,11 @@ void Magos::atacar_con_arma(shared_ptr<personaje> enemigo) {
         }
     }
 
+    if (armas.first == nullptr && armas.second == nullptr) {
+        cout << Get_nombre() << " no tiene armas equipadas." << endl;
+        return;
+    }
+
     cout << "Con qué arma quieres atacar?" << endl;
     if (armas.first != nullptr) {
         cout << "1. " << armas.first->Get_nombre() << endl;
@@ -192,6 +197,15 @@ void Magos::atacar_con_arma(shared_ptr<personaje> enemigo) {
     enemigo->recibir_ataque(daño.first, daño.second, false);
 }
 
+void Magos::atacar(shared_ptr<personaje> enemigo){
+    int ataque = rand() % 2;
+    if (ataque == 0) {
+        ataque_rapido(enemigo);
+    } else {
+        atacar_con_arma(enemigo);
+    }
+    return;
+}
 
 void Magos::recibir_efecto(EFFECTO efecto) {
     int duracion;

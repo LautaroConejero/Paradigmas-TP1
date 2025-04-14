@@ -51,6 +51,7 @@ class Guerreros : public personaje {
         
         void ataque_rapido(shared_ptr<personaje> enemigo) override;
         void atacar_con_arma(shared_ptr<personaje> enemigo) override;
+        void atacar(shared_ptr<personaje> enemigo) override;
         void recibir_efecto(EFFECTO efecto) override;
         void procesar_efectos() override;
 };

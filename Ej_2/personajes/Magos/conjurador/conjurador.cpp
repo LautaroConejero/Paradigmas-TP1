@@ -156,6 +156,7 @@ void conjurador::recibir_ataque(int daño, TIPO_DAÑO tipo, bool ignorar_armadur
         cout << Get_nombre() << " está asustado y recibe daño aumentado." << endl;
     }
 
+    int vida_actual = vida;
     if (ignorar_armadura) {
         vida -= daño;
     } else {
@@ -165,6 +166,7 @@ void conjurador::recibir_ataque(int daño, TIPO_DAÑO tipo, bool ignorar_armadur
             vida -= daño * (1 - resistencia_magica / 100.0);
         }
     }
+    cout << Get_nombre() << " recibe " << vida_actual - vida << " de daño." << endl;
 
     if (vida <= 0) {
         this->morir(0);

@@ -225,6 +225,8 @@ void brujo::recibir_ataque(int daño, TIPO_DAÑO tipo, bool ignorar_armadura) {
         cout << Get_nombre() << " está asustado y recibe daño aumentado." << endl;
     }
 
+    int vida_actual = vida;
+
     if (ignorar_armadura) {
         vida -= daño;
     } else {
@@ -234,6 +236,7 @@ void brujo::recibir_ataque(int daño, TIPO_DAÑO tipo, bool ignorar_armadura) {
             vida -= daño * (1 - resistencia_magica / 100.0);
         }
     }
+    cout << "" << Get_nombre() << " recibe " << vida_actual - vida << " de daño." << endl;
 
     if (vida <= 0) {
         estado_de_frenesi();
@@ -299,6 +302,11 @@ void brujo::atacar_con_arma(shared_ptr<personaje> enemigo) {
             cout << Get_nombre() << " se ha atacado a sí mismo por confusión." << endl;
             return;
         }
+    }
+
+    if (armas.first == nullptr && armas.second == nullptr) {
+        cout << Get_nombre() << " no tiene armas equipadas." << endl;
+        return;
     }
 
     cout << "Con qué arma quieres atacar?" << endl;

@@ -2,7 +2,7 @@
 
 Item_magicos::Item_magicos(string n, int dm, int d, float c):
 nombre(n), durabilidad(d), daño_fisico(0), daño_magico(dm), chance_critico(c){
-    int encantamiento = rand() % 6;
+    int encantamiento = rand() % 5;
     switch(encantamiento) {
         case 0: this->encantamiento = FUEGO; break;
         case 1: this->encantamiento = AGUA; break;

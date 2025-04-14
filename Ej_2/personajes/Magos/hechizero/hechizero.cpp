@@ -60,6 +60,8 @@ void hechizero::recibir_ataque(int daño, TIPO_DAÑO tipo, bool ignorar_armadura
         cout << Get_nombre() << " está asustado y recibe daño aumentado." << endl;
     }
 
+    int vida_actual = vida;
+
     if (ignorar_armadura == true){
         this->vida -= daño;
         cout << "El hechizero ha recibido " << daño << " de daño." << endl;
@@ -82,6 +84,8 @@ void hechizero::recibir_ataque(int daño, TIPO_DAÑO tipo, bool ignorar_armadura
             this->vida -= daño*(1 - this->resistencia_magica/100.0);
         }
     }
+    cout << Get_nombre() << " recibe " << vida_actual - vida << " de daño." << endl;
+    
     if (this->vida < 0) {
         this->morir(0);
     }

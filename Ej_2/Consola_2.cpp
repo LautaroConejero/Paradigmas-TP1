@@ -1,6 +1,7 @@
 #include "Consola_2.hpp"
 
 void consola_2(){
+    srand(time(0));
     cout << "Testeo de creacion de los personajes" << endl;
     
     cout << "Creando un barbaro..." << endl;
@@ -131,4 +132,8 @@ void consola_2(){
     cout << "Calidad: " << potion->Get_calidad() << endl;
     cout << "Encantamiento: " << potion->Get_encantamiento() << endl;
     cout << endl;
+
+
+    cout << "Testeo del nicromante" << endl;
+    necromante->reino_de_los_muertos(gladiator);
 }

@@ -17,7 +17,6 @@ struct InvocacionAnimal {
     int daño_fisico;
     float prob_efecto;
     EFFECTO efecto_asociado;
-    bool usada = false;
     
 };
 
@@ -25,6 +24,7 @@ class conjurador : public Magos {
     private:
         int invocaciones_maximas;
         vector<shared_ptr<InvocacionAnimal>> invocaciones_vivas;
+        bool usada = false;
     
     public:
         conjurador();

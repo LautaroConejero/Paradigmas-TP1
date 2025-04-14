@@ -2,7 +2,7 @@
 #include "../../../Equipo/Equipos.hpp"
 
 mercenario::mercenario(): 
-Guerreros(15,10,30,80,80,"Kael") {
+Guerreros(15,10,80,80,30,"Kael") {
 }
 
 string mercenario::Get_grupo() const {
@@ -106,6 +106,26 @@ void mercenario::ataque_rapido(shared_ptr<personaje> enemigo) {
 }
 
 void mercenario::atacar_con_arma(shared_ptr<personaje> enemigo) {
+
+    if (paralizado) {
+        cout << Get_nombre() << " está paralizado y no puede atacar este turno." << endl;
+        return;
+    }
+
+    if (confundido) {
+        int prob = rand() % 100;
+        if (prob < 35) {
+            recibir_ataque(daño_fisico + daño_magico, FISICO, false);
+            cout << Get_nombre() << " se ha atacado a sí mismo por confusión." << endl;
+            return;
+        }
+    }
+
+    if (armas.first == nullptr && armas.second == nullptr) {
+        cout << Get_nombre() << " no tiene armas equipadas." << endl;
+        return;
+    }
+
     cout << "Con que arma quieres atacar?" << endl;
     if (armas.first != nullptr) {
         cout << "1. " << armas.first->Get_nombre() << endl;
@@ -131,6 +151,12 @@ void mercenario::atacar_con_arma(shared_ptr<personaje> enemigo) {
     else{
         daño.first += this->daño_magico;
     }
+
+    if (quemado) {
+        daño.first *= 0.8;
+        cout << Get_nombre() << " está quemado y su daño fue reducido." << endl;
+    }
+
     int daño_critico = 0;
     if (rand() % 100 < critico_oro) {
         daño_critico = daño.first;

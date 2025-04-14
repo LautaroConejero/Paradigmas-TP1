@@ -9,8 +9,8 @@ enum INVOCACIONES_MUERTAS{
 
 #include "../../Magos/Magos.hpp"
 class Equipo;
-
-class nigromante : public Magos {
+// le pongo enable_shared_from_this<nigromante> asi puedo usar shared_from_this() en el reino de lo muertos para que pueda recibir ataques
+class nigromante : public Magos, public enable_shared_from_this<nigromante> {
     private:
         int resurrecciones_restantes;
         vector<pair<INVOCACIONES_MUERTAS, int>> invocaciones;

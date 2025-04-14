@@ -24,4 +24,6 @@
 #include "armas/items_magicos/pocion/pocion.hpp"
 #include "armas/items_magicos/amuleto/amuleto.hpp"
 
+#include <ctime>
+
 void consola_2();

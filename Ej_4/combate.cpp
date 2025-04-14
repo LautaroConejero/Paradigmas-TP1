@@ -62,20 +62,20 @@ void Accion_juego(int decision, shared_ptr<personaje>& jugador, shared_ptr<perso
         case 0:
             cout << "Perdiste el turno!" << endl;
             jugador->recibir_ataque(10, FISICO, true);
-            cout << "El enemigo con "<< enemigo->Get_nombre() << " ha atacado!" << endl;
+            cout << "El enemigo con "<< enemigo->Get_nombre() << "(" << enemigo->Get_grupo() <<") ha atacado!" << endl;
             cout << "El enemigo te ataco con ";
             if (enemigo->Get_armas().first == nullptr){
                 cout << "los puños";
-                cout << " y le hizo 10 de daño!" << endl;
             }
                 else {
                     cout << enemigo->Get_armas().first->Get_nombre() << endl;
     
                     if (enemigo->Get_armas().second != nullptr){
-                        cout << " y con " << enemigo->Get_armas().second->Get_nombre() << endl;
+                        cout << "Y con " << enemigo->Get_armas().second->Get_nombre() << endl;
                     }
-                    cout << " y le hizo 10 de daño!" << endl;
+                    cout << "Le hizo 10 de daño!" << endl;
                 }
+            cout << "Te hizo 10 de daño!" << endl;
 
             cout << endl;
             cout << "Tu vida es: " << jugador->Get_vida() << endl;
@@ -84,21 +84,22 @@ void Accion_juego(int decision, shared_ptr<personaje>& jugador, shared_ptr<perso
         case 1:
             cout << "Ganaste el turno!" << endl;
             enemigo->recibir_ataque(10, FISICO, true);
-            cout << "Tu " << jugador->Get_nombre() << " ha atacado!" << endl;
+            cout << "Tu "<< enemigo->Get_nombre() << "(" << enemigo->Get_grupo() <<") ha atacado!" << endl;
             
             cout << "Ataco con ";
 
             if (jugador->Get_armas().first == nullptr){
                 cout << "los puños";
-                cout << " y le hizo 10 de daño!" << endl;
             } else {
                 cout <<jugador->Get_armas().first->Get_nombre() << endl;
     
                 if (jugador->Get_armas().second != nullptr){
-                    cout << " y con " << jugador->Get_armas().second->Get_nombre() << endl;
+                    cout << "Y con " << jugador->Get_armas().second->Get_nombre() << endl;
                 }
-                cout << " y le hizo 10 de daño!" << endl;
             }
+            cout << " Le hiciste 10 de daño!" << endl;
+
+            cout << endl;
             cout << "Tu vida es: " << jugador->Get_vida() << endl;
             cout << "La vida del enemigo es: " << enemigo->Get_vida() << endl;
             break;
