@@ -1,7 +1,7 @@
 #include "paladin.hpp"
 
 paladin::paladin(): 
-Guerreros(30,25,25,70,70, "Thalorín"),
+Guerreros(30,25,70,70,25, "Thalorín"),
 escudo (false), fe(0), vida_fe(0), estamina_fe(0), daño_fe(0) {
 }
 
@@ -72,6 +72,10 @@ void paladin::aplicar_fe() {
     int nueva_estamina_fe = estamina_maxima * fe / 100;
 
     vida_maxima -= vida_fe;
+    vida -= nueva_vida_fe;
+    if (vida < 0) {
+        vida = 1;
+    }
     estamina_maxima -= estamina_fe;
 
     vida_fe = nueva_vida_fe;
@@ -227,7 +231,7 @@ void paladin::golpe_divino(shared_ptr<personaje> enemigo) {
     }
     if (this->fe >= 35) {
         cout << "El paladin ha llamado a la luz para hacer un golpe divino." << endl;
-        enemigo->recibir_ataque(35+this->daño_fe, MAGICO, true);
+        enemigo->recibir_ataque((this->daño_fisico+this->daño_fe)*1.3, FISICO, true);
         this->fe -= 35;
         aplicar_fe();
     } else {

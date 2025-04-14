@@ -56,11 +56,11 @@ bool barbaro::olfato_de_caza(shared_ptr<personaje> enemigo){
 void barbaro::rompe_huesos(shared_ptr<personaje> enemigo){
     if (furia >= 30){
         if (vida < vida_maxima*0.5){
-        enemigo->recibir_ataque(daño_fisico*0.5, FISICO, true);
+        enemigo->recibir_ataque((daño_fisico + bonus_daño_furia )*0.5, FISICO, true);
         furia -= 30;
         }
         else{
-            enemigo->recibir_ataque(daño_fisico*0.25, FISICO, true);
+            enemigo->recibir_ataque((daño_fisico + bonus_daño_furia )*0.25, FISICO, true);
             furia -= 30;
         }
         aplicar_bonuses_por_furia();
@@ -167,6 +167,9 @@ void barbaro::ataque_rapido(shared_ptr<personaje> enemigo) {
         cout << Get_nombre() << " está quemado y su daño fue reducido." << endl;
     }
 
+    if (olfato_de_caza(enemigo)){
+        daño += 10;
+    }
     enemigo->recibir_ataque(daño, FISICO, false);
     aumentar_furia(daño); // Aumentar furia al atacar
     return;
@@ -224,6 +227,9 @@ void barbaro::atacar_con_arma(shared_ptr<personaje> enemigo) {
         cout << Get_nombre() << " está quemado y su daño fue reducido." << endl;
     }
 
+    if (olfato_de_caza(enemigo)){
+        daño.first += 10;
+    }
     enemigo->recibir_ataque(daño.first, daño.second, false);
 
     aumentar_furia(daño.first); // Aumentar furia al atacar
@@ -281,12 +287,10 @@ void barbaro::modo_berserker() {
         cout << "No estás lo suficientemente furioso ni herido para activar el modo berserker." << endl;
         return;
     }
-
     recibir_efecto(INMORTALIDAD);
     furia = 0;
 
-    cout << Get_nombre() << " entra en MODO BERSERKER: daño aumentado, no puede morir por 3 turnos." << endl;
-    // Activá buffs especiales (como flag o temporizador si manejás rondas)
+    cout << Get_nombre() << " entra en MODO BERSERKER: no puede morir por 3 turnos." << endl;
 }
 
 

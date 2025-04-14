@@ -12,7 +12,6 @@ class gladiador : public Guerreros {
         bool esquivar_activado;
         int capacidad_adrenalina;
 
-        bool furia_activada;
         int armadura_adrenalina;
 
         bool espiritu_activado;

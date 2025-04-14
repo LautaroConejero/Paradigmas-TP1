@@ -133,17 +133,26 @@ void mercenario::atacar_con_arma(shared_ptr<personaje> enemigo) {
     if (armas.second != nullptr) {
         cout << "2. " << armas.second->Get_nombre() << endl;
     }
+    if (arma_robada != nullptr) {
+        cout << "3. " << arma_robada->Get_nombre() << endl;
+    }
     int opcion;
     cin >> opcion;
-    while (opcion < 1 || opcion > 2) {
+    while (opcion < 1 || opcion > 3) {
         cout << "Opcion invalida. Elige una opcion valida." << endl;
         cin >> opcion;
     }
     pair<int, TIPO_DAÑO> daño;
-    if (opcion == 1) {
-        daño = armas.first->Atacar();
-    } else if (opcion == 2) {
-        daño = armas.second->Atacar();
+    switch (opcion) {
+        case 1:
+            daño = armas.first->Atacar();
+            break;
+        case 2:
+            daño = armas.second->Atacar();
+            break;
+        case 3:
+            daño = arma_robada->Atacar();
+            break;
     }
     if (daño.second == FISICO) {
         daño.first += this->daño_fisico;

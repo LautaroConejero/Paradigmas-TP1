@@ -85,7 +85,7 @@ void hechizero::recibir_ataque(int daño, TIPO_DAÑO tipo, bool ignorar_armadura
         }
     }
     cout << Get_nombre() << " recibe " << vida_actual - vida << " de daño." << endl;
-    
+
     if (this->vida < 0) {
         this->morir(0);
     }
@@ -158,7 +158,7 @@ void hechizero::rayo_arcano(shared_ptr<personaje> enemigo){
             cout << "El rayo arcano ha sido mas fuerte de lo esperado!" << endl;
             cout << "Su daño ha sido aumentado." << endl;
         }
-        int daño_arcano = 38 + critico*12;
+        int daño_arcano = daño_magico + critico*12;
         cout << "El hechizero ha hecho " << daño_arcano << " de daño." << endl;
         enemigo->recibir_ataque(daño_arcano, MAGICO, false);
 
