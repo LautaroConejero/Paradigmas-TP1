@@ -2,7 +2,7 @@
 #define CREACION_TERMINAL_HPP
 
 #include "Persona_Factory.hpp"
-#include "../Ej_2/Equipo/Equipos.hpp"
+#include "Equipo/Equipos.hpp"
 #include <iostream>
 #include <cstdlib>
 #include <ctime>

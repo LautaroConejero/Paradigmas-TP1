@@ -1,3 +1,5 @@
+#ifndef CONSOLA_2_HPP
+#define CONSOLA_2_HPP
 //MAGOS
 #include "personajes/Magos/nigromante/nigromante.hpp"
 #include "personajes/Magos/conjurador/conjurador.hpp"
@@ -27,3 +29,6 @@
 #include <ctime>
 
 void consola_2();
+
+
+#endif

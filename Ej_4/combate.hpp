@@ -1,9 +1,9 @@
 #ifndef COMBATE_HPP
 #define COMBATE_HPP
 
-#include "../Ej_2/personajes/personajes.hpp"
-#include "../Ej_2/armas/armas.hpp"
-#include "../Ej_3/Persona_Factory.hpp"
+#include "personajes/personajes.hpp"
+#include "armas/armas.hpp"
+#include "Persona_Factory.hpp"
 #include <memory>
 #include <iostream>
 #include <vector>
